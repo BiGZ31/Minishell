@@ -1,6 +1,6 @@
 PROG    = minishell
 
-SRCS    = main.c
+SRCS    = main.c ft_cd.c ft_echo.c ft_export.c ft_pwd.c utils.c
 OBJS    = ${SRCS:.c=.o}
 
 CC      = gcc
@@ -13,7 +13,7 @@ all: ${PROG}
 
 ${PROG}: ${OBJS}
 	@$(CC) ${OBJS} -o ${PROG} -lreadline
-	@echo "${PURPLE}Compiled correctly${NC}"
+	@echo "${PURPLE}Minishell Ready${NC}"
 
 ${OBJS}: %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@

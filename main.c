@@ -2,128 +2,67 @@
 
 #include "minishell.h"
 
-// void	ft_pwd(void)
-// {
-// 	char *cwd;
+char **get_input(char *input) {
+    char **command = malloc(8 * sizeof(char *));
+    char *separator = " ";
+    char *parsed;
+    int index = 0;
 
-//    if (getcwd(cwd, sizeof(cwd)) != NULL) 
-//    {
-//        printf("Current working dir: %s\n", cwd);
-//    } 
-//    else
-//        perror("getcwd() error");
-// }
+    parsed = strtok(input, separator);
+    while (parsed != NULL) {
+        command[index] = parsed;
+        index++;
 
-int	ft_strcmp(char *str1, char *str2)
+        parsed = strtok(NULL, separator);
+    }
+
+    command[index] = NULL;
+    return command;
+}
+
+void	ft_shell_parse(char *str)
 {
-	int i;
+	char **comand;
+	
+	comand = get_input(str);
+	execvp(comand[0], comand);
 
-	i = 0;
-	while(str1[i])
+}
+
+int main(int ac, char **av, char **envp)
+{
+	char *inpt;
+
+	printf("%sYou are using Minishell\nTry using %s'help'%s comand.%s\n", G_CYAN, G_BLUE, G_CYAN, RESET);
+	while (1)
 	{
-		if (str1[i] == str2[i])
-			i++;
+		(void) ac;
+		(void) av;
+		(void) envp;
+		inpt = readline("~/");
+		add_history(inpt);
+		if (ft_strcmp(inpt, "pwd") == 1) //pwd finished
+			ft_pwd();
+		else if (ft_strcmp(inpt, "help") == 1)
+			ft_help();
+		else if (ft_cd_comp(inpt) == 1) // cd "add error message when folder not found"
+			ft_cd(inpt);
+		else if (ft_strcmp(inpt, "exit") == 1) // exit finished
+			ft_exit();
+		else if (ft_echo_compare(inpt) == 1) //echo finished
+			ft_echo(inpt);
+		else if ((ft_echon_compare(inpt) == 1)) //echo -n (needs fix)
+			ft_echon(inpt);
+		else if (ft_strcmp(inpt, "export") == 1)
+			ft_export();
+		else if (inpt[0] == 'l' && inpt [1] == 's') // ls parsing to shell "error closing minishell on entry"
+			ft_shell_parse(inpt);
+		else if (ft_strcmp(inpt, "mkdir") == 1)
+			ft_shell_parse(inpt);
 		else
-			return (0);
-	}
-	return (1);
-}
-
-int	ft_echo_compare(char *str)
-{
-	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && str[4] == ' ')
-		return (1);
-	return (0);
-}
-
-int	ft_echon_compare(char *str)
-{
-	int i;
-
-	i = 0;
-	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && str[4] == ' ')
-		i = 4;
-	while(str[i] == ' ')
-	{
-		i++;
-		if (str[i] == '-' && str[i + 1] == 'n')
-			return (1);
-	}
-	return (0);
-}
-
-void	ft_echon(char *str)
-{
-	int i;
-	// int bin;
-	// int bin2;
-
-	// bin = 0;
-	// bin2 = 0;
-	i = 4;
-	while(str[i])
-	{
-		while(str[i] != '-' && str[i + 1] != 'n')
 		{
-			i++;				
-		}
-		i = i + 2;
-		printf("%c", str[i]);
-		i++;
-	}
-	printf("%%");
-}
-
-void	ft_echo(char *str)
-{
-	int i;
-	int bin;
-
-	bin = 0;
-	i = 0;
-	while(str[i])
-	{
-		while(i < 4)
-			i++;
-		while(str[i] == ' ')
-		{
-			if (bin == 1)
-				break;
-			i++;
-		}
-		bin = 1;
-		printf("%c", str[i]);
-		i++;
-	}
-	printf("\n");
-}
-
-int main(void)
-{
-        char *inpt;
-
-        while (1)
-        {
-                inpt = readline("~/");
-                add_history(inpt);
-				if (ft_strcmp(inpt, "pwd") == 1)
-					printf("In dev !\n");
-				else if (ft_strcmp(inpt, "clear") == 1)
-					clear_history();
-				else if (ft_strcmp(inpt, "exit") == 1)
-					exit(0);
-				else if (ft_echo_compare(inpt) == 1)
-					ft_echo(inpt);
-				else if ((ft_echon_compare(inpt) == 1))
-					ft_echon(inpt);
-				else
-				{
-					printf("Error: command not found!\n");
-				}
-                //printf("%s", inpt);
-				
-        }
-
-        return 0;
-
+			printf("Error: command not found!\n");
+		}	
+    }
+    return 0;
 }
