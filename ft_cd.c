@@ -22,6 +22,40 @@ int	ft_check_file(char *folder)
 	return (0);
 }
 
+int ft_cd_exists(char *file)
+{
+	char *temp;
+	char *pwd;
+	int	i;
+	int start;
+	int size;
+
+	i = 0;
+	pwd = ft_pwd(5);
+	while(pwd[i])
+		i++;
+	while(pwd[i] != '/')
+		i--;
+	i++;
+	size = i;
+	start = i;
+	while(pwd[size])
+		size++;
+	temp = malloc(sizeof(char) * size + 1);
+	i = 0;
+	while(pwd[start])
+	{
+		temp[i] = pwd[start];
+		start++;
+		i++;
+	}
+	if (ft_strcmp(file, temp) == 0)
+		printf("Error: Folder not found.\n");
+	free(temp);
+	free(pwd);
+	return (0);
+}
+
 void	ft_cd(char *str)
 {
 	int i;
@@ -48,5 +82,7 @@ void	ft_cd(char *str)
 	}
 	ft_check_file(new);
 	chdir(new);
+	if (new[0] != '.' && new[1] != '.') //	trying to fix the cd ..
+		ft_cd_exists(new);
 	free(new);
 }
