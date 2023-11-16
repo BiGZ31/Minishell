@@ -41,8 +41,11 @@ int main(int ac, char **av, char **envp)
 		(void) envp;
 		inpt = readline("~/");
 		add_history(inpt);
+		//parsing(inpt);
 		if (ft_strcmp(inpt, "pwd") == 1) //pwd finished
 			ft_pwd('0');
+		else if (ft_strcmp(inpt, "env") == 1)
+			ft_env();
 		else if (ft_strcmp(inpt, "help") == 1)
 			ft_help();
 		else if (ft_cd_comp(inpt) == 1) // cd "add error message when folder not found"

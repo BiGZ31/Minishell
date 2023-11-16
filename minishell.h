@@ -27,6 +27,9 @@ void	ft_cd(char *str);
 /*PWD FILE*/
 char	*ft_pwd(int i);
 
+/*ENV FILE*/
+void	ft_env();
+
 /*ECHO FILE*/
 int		ft_echo_compare(char *str);
 int		ft_echon_compare(char *str);

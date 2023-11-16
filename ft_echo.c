@@ -44,6 +44,8 @@ void	ft_echon(char *str)
 	}
 	printf("%%");
 }
+// use a search str in str of echo to get the $args or stuff then when found delete and %s $ARGS
+
 
 void	ft_echo(char *str)
 {

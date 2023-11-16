@@ -1,6 +1,6 @@
 PROG    = minishell
 
-SRCS    = main.c ft_cd.c ft_echo.c ft_export.c ft_pwd.c utils.c
+SRCS    = main.c ft_cd.c ft_echo.c ft_export.c ft_pwd.c utils.c ft_env.c
 OBJS    = ${SRCS:.c=.o}
 
 CC      = gcc

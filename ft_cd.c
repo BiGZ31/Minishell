@@ -49,7 +49,7 @@ int ft_cd_exists(char *file)
 		start++;
 		i++;
 	}
-	if (ft_strcmp(file, temp) == 0)
+	if (ft_strcmp(file, temp) == 0) // we need to add a temp with a "\"" in the end 
 		printf("Error: Folder not found.\n");
 	free(temp);
 	free(pwd);
