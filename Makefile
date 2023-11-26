@@ -4,8 +4,8 @@ LIBFT = $(LIBS_DIR)/libft.a
 OBJS_DIR = objs
 INCS_DIR = includes
 
-VPATH = ./srcs:\
-	./srcs/check_input
+VPATH = srcs:\
+	srcs/check_input
 
 SRCS = $(notdir $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c srcs/*/*/*/*.c))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
@@ -15,7 +15,7 @@ CFLAGS = -Werror -Wextra -Wall
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -L $(LIBS_DIR)/libft -lft -lreadline
+	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline -I./$(INCS_DIR)
 
 $(OBJS_DIR)/%.o: %.c
 	@if [ ! -d $(OBJS_DIR) ]; then \
