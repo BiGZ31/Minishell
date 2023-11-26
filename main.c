@@ -39,7 +39,7 @@ int main(int ac, char **av, char **envp)
 		(void) ac;
 		(void) av;
 		(void) envp;
-		inpt = readline("~/");
+		inpt = readline("🎅");
 		add_history(inpt);
 		//parsing(inpt);
 		if (ft_strcmp(inpt, "pwd") == 1) //pwd finished

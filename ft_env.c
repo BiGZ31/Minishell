@@ -2,6 +2,8 @@
 
 void	ft_env()
 {
+	printf("%s\n", getenv("ENV"));
+	printf("\n\n\n");
 	printf("SSH_AUTH_SOCK=%s\n", getenv(""));
 	printf("SESSION_MANAGER=%s\n", getenv(""));
 	printf("GNOME_TERMINAL_SCREEN=%s\n", getenv(""));
