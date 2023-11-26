@@ -12,7 +12,7 @@
 
 # include "../includes/minishell.h"
 
-void	ft_env(char **envp)
+void	ft_env(char **envp)// add the function when you moove path it also mooves
 {
 	int	i;
 
