@@ -12,12 +12,12 @@
 
 #include "../includes/minishell.h"
 
-void    check_ourft_or_fork(char *input)
+void    check_ourft_or_fork(char *input, char **envp)
 {
     if (!ft_strncmp(input, "pwd", 3))  //pwd finished (why always displaying when no commands)
 			ft_pwd('0');
 		else if (!ft_strncmp(input, "env", 3))
-			ft_env();
+			ft_env(envp);
 		else if (!ft_strncmp(input, "help", 4))
 			ft_help();
 		else if (!ft_strncmp(input, "cd", 2)) // cd correct the space after file and also the 

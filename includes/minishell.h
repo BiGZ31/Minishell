@@ -40,7 +40,7 @@
 
 // CHECK INPUT //
 
-void    check_ourft_or_fork(char *input);
+void    check_ourft_or_fork(char *input, char **envp);
 
 
 

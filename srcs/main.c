@@ -33,7 +33,7 @@ int main(int ac, char **av, char **envp)
 			continue ;
 		}
 		else
-			check_ourft_or_fork(input);
+			check_ourft_or_fork(input, envp);
     }
     return 0;
 }
