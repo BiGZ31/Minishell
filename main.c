@@ -33,19 +33,20 @@ int main(int ac, char **av, char **envp)
 {
 	char *inpt;
 
+
+	printf("env[0] = %s\n", envp[0]);
 	printf("%sYou are using Minishell\nTry using %s'help'%s comand.%s\n", G_CYAN, G_BLUE, G_CYAN, RESET);
 	while (1)
 	{
 		(void) ac;
 		(void) av;
-		(void) envp;
-		inpt = readline("🎅");
+		inpt = readline("KawaiShell");
 		add_history(inpt);
 		//parsing(inpt);
 		if (ft_strcmp(inpt, "pwd") == 1) //pwd finished
 			ft_pwd('0');
 		else if (ft_strcmp(inpt, "env") == 1)
-			ft_env();
+			ft_env(envp);
 		else if (ft_strcmp(inpt, "help") == 1)
 			ft_help();
 		else if (ft_cd_comp(inpt) == 1) // cd "add error message when folder not found"
