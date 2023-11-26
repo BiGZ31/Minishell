@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 int	ft_cd_comp(char *str)
 {

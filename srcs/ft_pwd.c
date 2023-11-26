@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "minishell.h"
+#include "../includes/minishell.h"
 
 char	*ft_pwd(int i)
 {
