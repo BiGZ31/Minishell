@@ -8,6 +8,7 @@ INCS_DIR = includes
 LIBS_DIR = libs
 
 VPATH = ./srcs:\
+	./srcs/check_input: \
 
 SRCS = $(notdir $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c srcs/*/*/*/*.c))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))

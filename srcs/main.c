@@ -44,7 +44,7 @@ int main(int ac, char **av, char **envp)
 		//parsing(inpt);
 		if (input == NULL || *input == '\0')
 		{
-			free(inpt);
+			free(input);
 			continue ;
 		}
 		else

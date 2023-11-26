@@ -18,6 +18,6 @@ void    check_ourft_or_fork(char *input)
 			ft_echon(input);
 		else if (!ft_strncmp(input, "export", 6))
 			ft_export();
-        else
-            fork_needed(input);
+        // else
+        //     fork_needed(input);
 }
