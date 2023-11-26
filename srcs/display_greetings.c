@@ -12,21 +12,6 @@
 
 #include "../includes/minishell.h"
 
-int	ft_strcmp(char *str1, char *str2)
-{
-	int i;
-
-	i = 0;
-	while(str1[i])
-	{
-		if (str1[i] == str2[i])
-			i++;
-		else
-			return (0);
-	}
-	return (1);
-}
-
 void	ft_exit(void)
 {
 	printf("%sGoodbye, thanks for using Minishell !%s\n", PINK, RESET);
