@@ -14,33 +14,6 @@
 
 #include "../includes/minishell.h"
 
-char **get_input(char *input) {
-    char **command = malloc(8 * sizeof(char *));
-    char *separator = " ";
-    char *parsed;
-    int index = 0;
-
-    parsed = strtok(input, separator);
-    while (parsed != NULL) {
-        command[index] = parsed;
-        index++;
-
-        parsed = strtok(NULL, separator);
-    }
-
-    command[index] = NULL;
-    return command;
-}
-
-void	ft_shell_parse(char *str)
-{
-	char **comand;
-	
-	comand = get_input(str);
-	execvp(comand[0], comand);
-
-}
-
 int main(int ac, char **av, char **envp)
 {
 	char *input;

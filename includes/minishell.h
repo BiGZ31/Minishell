@@ -56,7 +56,7 @@ void	ft_cd(char *str);
 char	*ft_pwd(int i);
 
 /*ENV FILE*/
-void	ft_env();
+void	ft_env(char **envp);
 
 /*ECHO FILE*/
 int		ft_echo_compare(char *str);
