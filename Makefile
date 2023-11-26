@@ -1,33 +1,28 @@
 NAME = minishell
-
+LIBS_DIR = libs
 LIBFT = $(LIBS_DIR)/libft.a
-
-
 OBJS_DIR = objs
 INCS_DIR = includes
-LIBS_DIR = libs
 
 VPATH = ./srcs:\
-	./srcs/check_input: \
+	./srcs/check_input
 
 SRCS = $(notdir $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c srcs/*/*/*/*.c))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
 CC = gcc
 CFLAGS = -Werror -Wextra -Wall
 
-############################################################################
+all: $(LIBFT) $(NAME)
 
-all: $(LIBFT)  $(NAME) 
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -L $(LIBS_DIR)/libft -lft -lreadline
 
-$(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline -I ./$(INCS_DIR0)
-
-$(OBJS_DIR)/%.o: %.c 
-	@if [ ! -d $(OBJS_DIR) ]; then	\
-		mkdir $(OBJS_DIR);			\
-		echo mkdir $(OBJS_DIR);		\
+$(OBJS_DIR)/%.o: %.c
+	@if [ ! -d $(OBJS_DIR) ]; then \
+		mkdir $(OBJS_DIR);          \
+		echo mkdir $(OBJS_DIR);     \
 	fi
-	$(CC) $(CFLAGS) -g -c $< -o $@ -L $(LIBS_DIR) -lft -I $(INCS_DIR)
+	$(CC) $(CFLAGS) -g -c $< -o $@ -I $(INCS_DIR)
 
 $(LIBFT):
 	make -s -C $(LIBS_DIR)/libft
@@ -36,14 +31,11 @@ $(LIBFT):
 clean:
 	rm -rf $(OBJS_DIR)/*.o
 	make clean -s -C $(LIBS_DIR)/libft
-	
+
 fclean: clean
 	rm -rf $(NAME) $(LIBFT)
 	make fclean -s -C $(LIBS_DIR)/libft
 
 re: fclean all
 
-############################################################################
-
-
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
