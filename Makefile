@@ -20,7 +20,7 @@ CFLAGS = -Werror -Wextra -Wall
 all: $(LIBFT)  $(NAME) 
 
 $(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline $(INCS_DIR0)
+	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline -I $(INCS_DIR0)
 
 $(OBJS_DIR)/%.o: %.c 
 	@if [ ! -d $(OBJS_DIR) ]; then	\
@@ -33,19 +33,13 @@ $(LIBFT):
 	make -s -C $(LIBS_DIR)/libft
 	rsync -a $(LIBS_DIR)/libft/libft.a $(LIBS_DIR)/
 
-$(MLIBX):
-	make -s -C $(LIBS_DIR)/mlibx
-	rsync -a $(LIBS_DIR)/mlbx/libmx.a $(LIBS_DIR)/
-
 clean:
 	rm -rf $(OBJS_DIR)/*.o
 	make clean -s -C $(LIBS_DIR)/libft
-	make clean -s -C $(LIBS_DIR)/mlibx
 	
 fclean: clean
-	rm -rf $(NAME) $(LIBFT) $(MLIBX)
+	rm -rf $(NAME) $(LIBFT)
 	make fclean -s -C $(LIBS_DIR)/libft
-	make clean -s -C $(LIBS_DIR)/mlibx
 
 re: fclean all
 
