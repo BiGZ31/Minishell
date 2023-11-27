@@ -9,6 +9,8 @@ VPATH = srcs:\
 	srcs/builtin_implementations:\
 	srcs/builtin_implementations/pipe_only:\
 	srcs/parsing:\
+	srcs/fork:\
+	srcs/pipe:\
 	srcs/tools:\
 	srcs/extra:
 

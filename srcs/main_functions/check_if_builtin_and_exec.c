@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_ourft_or_fork.c                              :+:      :+:    :+:   */
+/*   check_if_builtin_and_exec.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:00:50 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 20:00:50 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:06:51 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	check_builtin(char *input)
 	else
 	{
 		input = clear_quotes(input);
-		check_builtin(input);
+		return (check_builtin(input));
 	}
 	return (1);
 }
