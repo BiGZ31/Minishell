@@ -14,7 +14,7 @@
 
 void    check_ourft_or_fork(char *input, char **envp)
 {
-    if (!ft_strncmp(input, "pwd", 3))  //pwd finished (why always displaying when no commands)
+    	if (!ft_strncmp(input, "pwd", 3))  //pwd finished (why always displaying when no commands)
 			ft_pwd('0');
 		else if (!ft_strncmp(input, "env", 3))
 			ft_env(envp);
@@ -31,7 +31,11 @@ void    check_ourft_or_fork(char *input, char **envp)
 		else if (!ft_strncmp(input, "export", 6))
 			ft_export();
 		else
-			clear_quotes(input);
+		{
+			input = clear_quotes(input);
+			check_ourft_or_fork(input, envp);
+		}
+			
         // else
         //     fork_needed(input);
 
