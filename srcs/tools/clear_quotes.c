@@ -12,7 +12,7 @@
 
 # include "../../includes/minishell.h"
 
-void	clear_quotes(char *str)
+char	*clear_quotes(char *str)
 {
 	char *temp;
     int i;
@@ -27,7 +27,6 @@ void	clear_quotes(char *str)
 		count++;
         i++;
     }
-	printf("count = %d\n", count);
     temp = malloc(sizeof(char) * count);
     i = 0;
 	count = 0;
@@ -40,5 +39,5 @@ void	clear_quotes(char *str)
         count++;
     }
 	temp[count] = '\0';
-    printf("%s\n", temp);
+	return (temp);
 }
