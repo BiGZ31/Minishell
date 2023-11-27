@@ -14,30 +14,30 @@
 
 int	check_builtin(char *input)
 {
-	if (!ft_strncmp(input, "pwd", 3))  //pwd finished (why always displaying when no commands)
-		return (0);
+	if (!ft_strncmp(input, "pwd", 3))
+		return (IS_A_BUILTIN);
 	else if (!ft_strncmp(input, "env", 3))
-		return (0);
+		return (IS_A_BUILTIN);
 	else if (!ft_strncmp(input, "help", 4))
-		return (0);
-	else if (!ft_strncmp(input, "cd", 2)) // cd correct the space after file and also the correct also the cd ../
-		return (0);
-	else if (!ft_strncmp(input, "exit", 4)) // exit finished
-		return (0);
-	else if (!ft_strncmp(input, "echo", 4)) //echo try and do the double "" and simple ''
-		return (0);
-	else if ((!ft_strncmp(input, "echo -n", 8))) //echo -n (needs fix)
-		return (0);
+		return (IS_A_BUILTIN);
+	else if (!ft_strncmp(input, "cd", 2))
+		return (IS_A_BUILTIN);
+	else if (!ft_strncmp(input, "exit", 4))
+		return (IS_A_BUILTIN);
+	else if (!ft_strncmp(input, "echo", 4))
+		return (IS_A_BUILTIN);
+	else if ((!ft_strncmp(input, "echo -n", 8)))
+		return (IS_A_BUILTIN);
 	else if (!ft_strncmp(input, "export", 6))
-		return (0);
-	else if (input == clear_quotes(input))
-		return (1);
+		return (IS_A_BUILTIN);
+	else if (!ft_strchr(input, '"'))
+		return (IS_NOT_A_BUILTIN);
 	else
 	{
 		input = clear_quotes(input);
 		return (check_builtin(input));
 	}
-	return (1);
+	return (IS_NOT_A_BUILTIN);
 }
 
 void	builtin(char *input, char **envp)
@@ -70,7 +70,7 @@ void    check_if_builtin_and_exec(char *input, char **envp)
 {
 
 
-		if (check_builtin(input) == 0)
+		if (check_builtin(input) == IS_A_BUILTIN)
 			builtin(input, envp);
 		else
 			printf("Error: Command not found.\n");
