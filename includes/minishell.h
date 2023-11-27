@@ -46,7 +46,6 @@ enum    split
 
 
 
-
 // CHECK INPUT //
 
 void    check_if_builtin_and_exec(char *input, char **envp);
