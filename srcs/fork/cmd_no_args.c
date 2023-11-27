@@ -1,6 +1,6 @@
 #include "../../includes/minishell.h"
 
-void    cmd_no_args(char *input)
+void    cmd_no_args()
 {
 	
 }

@@ -6,7 +6,7 @@
 /*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/27 23:20:55 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:22:48 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ typedef struct	s_fork
     char	**cmd_args;
 }				t_fork;
 
-typedef struct s_data
+typedef struct	s_data
 {   
 	char	*input;
     t_fork  fork;
 	int		*pipex;
-}
+}				t_data;
 
 // CHECK INPUT //
 
