@@ -20,7 +20,7 @@ void    check_ourft_or_fork(char *input, char **envp)
 			ft_env(envp);
 		else if (!ft_strncmp(input, "help", 4))
 			ft_help();
-		else if (!ft_strncmp(input, "cd", 2)) // cd correct the space after file and also the 
+		else if (!ft_strncmp(input, "cd", 2)) // cd correct the space after file and also the correct also the cd ../
 			ft_cd(input);
 		else if (!ft_strncmp(input, "exit", 4)) // exit finished
 			ft_exit();
@@ -30,6 +30,13 @@ void    check_ourft_or_fork(char *input, char **envp)
 			ft_echon(input);
 		else if (!ft_strncmp(input, "export", 6))
 			ft_export();
+		else
+			ft_check_builtins(input);
         // else
         //     fork_needed(input);
+
+
+
+		if(check_builtin(input) == NIET)
+			fork_function(input);
 }
