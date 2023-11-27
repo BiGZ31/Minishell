@@ -24,7 +24,7 @@ int main(int ac, char **av, char **envp)
 		(void) ac;
 		(void) av;
 		(void) envp;
-		input = readline("\e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊• \e[0m: ");
+		input = readline("➜ \e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊•\e[0m : ");
 		add_history(input);
 		//parsing(inpt);
 		if (input == NULL || *input == '\0')

@@ -8,6 +8,7 @@ VPATH = srcs:\
 	srcs/main_functions:\
 	srcs/builtin_implementations:\
 	srcs/parsing:\
+	srcs/tools:\
 	srcs/extra:
 
 SRCS = $(notdir $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c srcs/*/*/*/*.c))
