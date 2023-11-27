@@ -6,7 +6,7 @@
 /*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/27 23:22:48 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:47:37 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@
 typedef struct	s_fork
 {
     char	*cmd_no_args;
-    char	**cmd_args;
+	char	**cmd_args;
 }				t_fork;
 
 typedef struct	s_data
-{   
+{
 	char	*input;
     t_fork  fork;
 	int		*pipex;
+	char	*env;
 }				t_data;
 
 // CHECK INPUT //
@@ -60,6 +61,14 @@ void echo(char *str);
 /*EXPORT FILE*/
 void export(void);
 
+
+
+// FORK //
+void    cmd_no_args(char *cmd, t_data *data);
+
+
 /*UTILS FILE*/
-void help(void);
-void exitx(char *input);
+void 	help(void);
+void	welcome_message(void);
+
+void	 exitx(char *input);
