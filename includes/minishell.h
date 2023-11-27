@@ -51,7 +51,7 @@ enum    split
 // CHECK INPUT //
 
 void    check_ourft_or_fork(char *input, char **envp);
-void	ft_check_builtins(char *str);
+void	clear_quotes(char *str);
 
 
 

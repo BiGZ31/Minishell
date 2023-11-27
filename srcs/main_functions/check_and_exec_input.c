@@ -31,12 +31,12 @@ void    check_ourft_or_fork(char *input, char **envp)
 		else if (!ft_strncmp(input, "export", 6))
 			ft_export();
 		else
-			ft_check_builtins(input);
+			clear_quotes(input);
         // else
         //     fork_needed(input);
 
 
 
-		if(check_builtin(input) == NIET)
-			fork_function(input);
+		// if(check_builtin(input) == NIET)
+		// 	fork_function(input);
 }

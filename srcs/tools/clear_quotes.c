@@ -12,7 +12,7 @@
 
 # include "../../includes/minishell.h"
 
-void	ft_check_builtins(char *str)
+void	clear_quotes(char *str)
 {
 	char *temp;
     int i;
@@ -23,21 +23,22 @@ void	ft_check_builtins(char *str)
     while(str[i])
     {
         if (str[i] == '"')
-            i++;
-        count++;
+            count--;
+		count++;
         i++;
     }
-    temp = malloc(sizeof(char) * count + 1);
-
+	printf("count = %d\n", count);
+    temp = malloc(sizeof(char) * count);
     i = 0;
+	count = 0;
     while(str[i])
     {
-        if (str[i] == '"')
+        while (str[i] == '"')
             i++;
         temp[count] = str[i];
         i++;
         count++;
     }
-    
+	temp[count] = '\0';
     printf("%s\n", temp);
 }
