@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:00:50 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 20:00:50 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/27 22:18:58 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main(int ac, char **av, char **envp)
 			continue ;
 		}
 		else
-			check_ourft_or_fork(input, envp);
+			check_if_builtin_and_exec(input, envp);
     }
     return 0;
 }

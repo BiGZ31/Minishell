@@ -1,63 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 19:42:32 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/27 22:14:30 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../../includes/minishell.h"
 
-static int	echo_compare(char *str)
-{
-	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && (str[4] == ' ' || str[4] == '\0'))
-		return (1);
-	return (0);
-}
+// static int	echo_compare(char *str)
+// {
+// 	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && (str[4] == ' ' || str[4] == '\0'))
+// 		return (1);
+// 	return (0);
+// }
 
-static int	echon_compare(char *str)
-{
-	int i;
+// static int	echon_compare(char *str)
+// {
+// 	int i;
 
-	i = 0;
-	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && str[4] == ' ')
-		i = 4;
-	while(str[i] == ' ')
-	{
-		i++;
-		if (str[i] == '-' && str[i + 1] == 'n')
-			return (1);
-	}
-	return (0);
-}
-
-static void	echon(char *str)
-{
-	int i;
-	// int bin;
-	// int bin2;
-
-	// bin = 0;
-	// bin2 = 0;
-	i = 4;
-	while(str[i])
-	{
-		while(str[i] != '-' && str[i + 1] != 'n')
-		{
-			i++;				
-		}
-		i = i + 2;
-		printf("%c", str[i]);
-		i++;
-	}
-	printf("%%");
-}
-// use a search str in str of echo to get the $args or stuff then when found delete and %s $ARGS
-
+// 	i = 0;
+// 	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && str[4] == ' ')
+// 		i = 4;
+// 	while(str[i] == ' ')
+// 	{
+// 		i++;
+// 		if (str[i] == '-' && str[i + 1] == 'n')
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
 void	echo(char *str)
 {

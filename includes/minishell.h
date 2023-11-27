@@ -49,7 +49,7 @@ enum    split
 
 // CHECK INPUT //
 
-void    check_ourft_or_fork(char *input, char **envp);
+void    check_if_builtin_and_exec(char *input, char **envp);
 char	*clear_quotes(char *str);
 
 
@@ -58,19 +58,15 @@ char	*clear_quotes(char *str);
 
 
 /* CD FILE*/
-int check_file(char *folder);
-int cd_comp(char *str);
-voi cd(char *str);
+void cd(char *str);
 
 /*PWD FILE*/
-char    pwd(int i);
+char    *pwd(int i);
 
 /*ENV FILE*/
 void env(char **envp);
 
 /*ECHO FILE*/
-int echo_compare(char *str);
-int echon_compare(char *str);
 void echon(char *str);
 void echo(char *str);
 
@@ -79,4 +75,4 @@ void export(void);
 
 /*UTILS FILE*/
 void help(void);
-void exit(void);
+void exitx(char *input);

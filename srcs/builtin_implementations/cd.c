@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 20:00:50 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 20:00:50 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/27 22:12:42 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../includes/minishell.h"
 
-static int	comp(char *str)
-{
-	if(str[0] == 'c' && str[1] == 'd')
-		return (1);
-	return (0);
-}
+// static int	comp(char *str)
+// {
+// 	if(str[0] == 'c' && str[1] == 'd')
+// 		return (1);
+// 	return (0);
+// }
 
 static int	check_file(char *folder)
 {
@@ -37,27 +37,27 @@ static int	check_file(char *folder)
 static int exists(char *file)
 {
 	char *temp;
-	char *pwd;
+	char *pwd_path;
 	int	i;
 	int start;
 	int size;
 
 	i = 0;
-	pwd = ft_pwd(5);
-	while(pwd[i])
+	pwd_path = pwd(5);
+	while(pwd_path[i])
 		i++;
-	while(pwd[i] != '/')
+	while(pwd_path[i] != '/')
 		i--;
 	i++;
 	size = i;
 	start = i;
-	while(pwd[size])
+	while(pwd_path[size])
 		size++;
 	temp = malloc(sizeof(char) * size + 1);
 	i = 0;
-	while(pwd[start])
+	while(pwd_path[start])
 	{
-		temp[i] = pwd[start];
+		temp[i] = pwd_path[start];
 		start++;
 		i++;
 	}
@@ -65,7 +65,7 @@ static int exists(char *file)
 		printf("Error: Folder not found.\n");
 	//printf("file = %s\n", file);
 	free(temp);
-	free(pwd);
+	free(pwd_path);
 	return (0);
 }
 
