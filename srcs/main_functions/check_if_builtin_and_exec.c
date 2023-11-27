@@ -61,7 +61,7 @@ void	builtin(char *input, char **envp)
 	else
 	{
 		input = clear_quotes(input);
-		check_builtin(input);
+		builtin(input, envp);
 	}
 
 }
