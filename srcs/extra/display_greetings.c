@@ -14,7 +14,7 @@
 
 void	ft_exit(void)
 {
-	printf("%sGoodbye, thanks for using Minishell !%s\n", PINK, RESET);
+	printf("%sGoodbye, thanks for using KawaiiShell !%s\n", PINK, RESET);
 	exit (0);
 }
 

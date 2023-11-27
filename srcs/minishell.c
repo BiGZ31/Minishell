@@ -18,7 +18,7 @@ int main(int ac, char **av, char **envp)
 {
 	char *input;
 	printf("%s", kaw);
-	printf("\n%sYou are using Minishell\nTry using %s'help'%s comand.%s\n\n", G_CYAN, G_BLUE, G_CYAN, RESET);
+	printf("\n%sYou are using KawaiiShell\nTry using %s'help'%s comand.%s\n\n", G_CYAN, G_BLUE, G_CYAN, RESET);
 	while (1)
 	{
 		(void) ac;

@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: apetre <apetre@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 19:42:32 by lumontgo         ###   ########.fr       */
+/*   Created: 2023/11/27 00:53:31 by apetre            #+#    #+#             */
+/*   Updated: 2023/11/27 00:53:31 by apetre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../minishell.h"
 
-#include "../includes/minishell.h"
-
-char	*ft_pwd(int i)
+char    **split_special_chars(char *str)
 {
-	char *buf;
-	buf=(char *)malloc(100*sizeof(char));
-	getcwd(buf,100);
-	if (i != 5)
-		printf("%s \n",buf);
-	if (i == 5)
-		return (buf);
-	free(buf);
-	return (NULL);
+    
 }

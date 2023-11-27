@@ -5,7 +5,10 @@ OBJS_DIR = objs
 INCS_DIR = includes
 
 VPATH = srcs:\
-	srcs/check_input
+	srcs/main_functions:\
+	srcs/builtin_implementations:\
+	srcs/parsing:\
+	srcs/extra:
 
 SRCS = $(notdir $(wildcard srcs/*.c srcs/*/*.c srcs/*/*/*.c srcs/*/*/*/*.c))
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.c=.o))
