@@ -58,25 +58,25 @@ char	*clear_quotes(char *str);
 
 
 /* CD FILE*/
-int		ft_check_file(char *folder);
-int		ft_cd_comp(char *str);
-void	ft_cd(char *str);
+int check_file(char *folder);
+int cd_comp(char *str);
+voi cd(char *str);
 
 /*PWD FILE*/
-char	*ft_pwd(int i);
+char    pwd(int i);
 
 /*ENV FILE*/
-void	ft_env(char **envp);
+void env(char **envp);
 
 /*ECHO FILE*/
-int		ft_echo_compare(char *str);
-int		ft_echon_compare(char *str);
-void	ft_echon(char *str);
-void	ft_echo(char *str);
+int echo_compare(char *str);
+int echon_compare(char *str);
+void echon(char *str);
+void echo(char *str);
 
 /*EXPORT FILE*/
-void	ft_export(void);
+void export(void);
 
 /*UTILS FILE*/
-void	ft_help(void);
-void	ft_exit(void);
+void help(void);
+void exit(void);

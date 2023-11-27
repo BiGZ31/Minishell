@@ -13,14 +13,14 @@
 
 #include "../../includes/minishell.h"
 
-int	ft_cd_comp(char *str)
+static int	comp(char *str)
 {
 	if(str[0] == 'c' && str[1] == 'd')
 		return (1);
 	return (0);
 }
 
-int	ft_check_file(char *folder)
+static int	check_file(char *folder)
 {
 	int i;
 
@@ -34,7 +34,7 @@ int	ft_check_file(char *folder)
 	return (0);
 }
 
-int ft_cd_exists(char *file)
+static int exists(char *file)
 {
 	char *temp;
 	char *pwd;
@@ -69,7 +69,7 @@ int ft_cd_exists(char *file)
 	return (0);
 }
 
-void	ft_cd(char *str)
+void	cd(char *str)
 {
 	int i;
 	char *new;
@@ -93,9 +93,9 @@ void	ft_cd(char *str)
 		start++;
 		i++;
 	}
-	ft_check_file(new);
+	check_file(new);
 	chdir(new);
 	if (new[0] != '.' && new[1] != '.') //	trying to fix the cd ..
-		ft_cd_exists(new);
+		exists(new);
 	free(new);
 }

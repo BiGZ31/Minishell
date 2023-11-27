@@ -13,7 +13,7 @@
 
 #include "../../includes/minishell.h"
 
-char	*ft_pwd(int i)
+char	*pwd(int i)
 {
 	char *buf;
 	buf=(char *)malloc(100*sizeof(char));

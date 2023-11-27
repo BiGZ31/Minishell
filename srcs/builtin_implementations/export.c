@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 19:55:58 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 20:06:10 by lumontgo         ###   ########.fr       */
+/*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/11/26 19:42:32 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-void	ft_env(char **envp)// add the function when you moove path it also mooves
+void export(void)
 {
-	int	i;
-
-	i = 0;
-	while(envp[i])
-	{
-		printf("%s\n", envp[i]);
-		i++;
-	}
+	printf("COLORTERM=\n");
 }

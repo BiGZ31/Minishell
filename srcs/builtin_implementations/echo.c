@@ -12,14 +12,14 @@
 
 # include "../../includes/minishell.h"
 
-int	ft_echo_compare(char *str)
+static int	echo_compare(char *str)
 {
 	if (str[0] == 'e' && str[1] == 'c' && str[2] == 'h' && str[3] == 'o' && (str[4] == ' ' || str[4] == '\0'))
 		return (1);
 	return (0);
 }
 
-int	ft_echon_compare(char *str)
+static int	echon_compare(char *str)
 {
 	int i;
 
@@ -35,7 +35,7 @@ int	ft_echon_compare(char *str)
 	return (0);
 }
 
-void	ft_echon(char *str)
+static void	echon(char *str)
 {
 	int i;
 	// int bin;
@@ -59,7 +59,7 @@ void	ft_echon(char *str)
 // use a search str in str of echo to get the $args or stuff then when found delete and %s $ARGS
 
 
-void	ft_echo(char *str)
+void	echo(char *str)
 {
 	int i;
 	int bin;
