@@ -60,4 +60,6 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		else
 			waitpid(0, NULL, 0);
 	}
+	else
+		printf("KawaiiShell: command not found: %s\n", data->fork.cmd_no_args);
 }
