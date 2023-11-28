@@ -33,6 +33,8 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		//printf("cmd after2 = %s\n", cmd);
 		return ;
 	}
+	while(*cmd == ' ')
+		cmd++;
 	data->fork.cmd_args = ft_split(cmd, ' ');
 	cmd_no_args(cmd, data);
 	while(data->path[i])
@@ -43,6 +45,8 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		//printf("path1 = %s\n", exec_path);
 		if (!access(exec_path, F_OK))
 			break;
+		for(int i = 0; i < 100; i++)
+			;
 		else if (access(exec_path, F_OK) != 0 && !envp[i + 1])
 		{
 			free(exec_path);
@@ -51,7 +55,7 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		}
 		i++;
 	}
-	printf("path2 = %s\n", exec_path);
+	//printf("path2 = %s\n", exec_path);
 	if (exec_path)
 	{
 		printf("check\n");
