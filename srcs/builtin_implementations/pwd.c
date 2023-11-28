@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/11/26 19:42:32 by lumontgo         ###   ########.fr       */
+/*   Updated: 2023/11/28 07:07:15 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*pwd(int i)
 	buf=(char *)malloc(100*sizeof(char));
 	getcwd(buf,100);
 	if (i != 5)
-		printf("%s \n",buf);
+		printf("%s%s           %s%s%s\n%s%s\n", G_CYAN, FIRST, PINK, buf, G_CYAN, SECOND, RESET);		
 	if (i == 5)
 		return (buf);
 	free(buf);
