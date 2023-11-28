@@ -1,5 +1,6 @@
 NAME = minishell
 LIBS_DIR = libs
+MACOS_LIBS_DIR = libs/macos
 LIBFT = $(LIBS_DIR)/libft.a
 OBJS_DIR = objs
 INCS_DIR = includes
@@ -29,7 +30,7 @@ CFLAGS = -Werror -Wextra -Wall
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline -lz $(RPATH_FLAGS)
+	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -L $(MACOS_LIBS_DIR) -lft -lreadline -lz $(RPATH_FLAGS)
 $(OBJS_DIR)/%.o: %.c
 	@if [ ! -d $(OBJS_DIR) ]; then \
 		mkdir $(OBJS_DIR);          \
