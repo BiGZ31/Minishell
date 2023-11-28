@@ -25,7 +25,7 @@ void	forkf(char *cmd, t_data *data, char **envp)
 			printf("path join  = %s\n", cmd);
 			char *argv[] = {cmd, NULL};
 			execve(cmd, argv, envp);
-			perror("execve");
+			perror("\t\t\texecve");
         	exit(EXIT_FAILURE);
 		}
 		else
