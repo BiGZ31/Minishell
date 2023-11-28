@@ -43,7 +43,7 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		//printf("path1 = %s\n", exec_path);
 		if (!access(exec_path, F_OK))
 			break;
-		else if (access(exec_path, F_OK) && !envp[i + 1])
+		else if (access(exec_path, F_OK) != 0 && !envp[i + 1])
 		{
 			free(exec_path);
 			exec_path = NULL;
@@ -51,10 +51,10 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		}
 		i++;
 	}
-	//printf("path2 = %s\n", exec_path);
+	printf("path2 = %s\n", exec_path);
 	if (exec_path)
 	{
-		//printf("check\n");
+		printf("check\n");
 		id = fork();
 		if (id == 0)
 			execve(exec_path, data->fork.cmd_args, envp);
