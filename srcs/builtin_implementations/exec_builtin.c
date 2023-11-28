@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-void	exec_builtin(char *input, char **envp)
+void	exec_builtin(char *input, char **envp, t_data *data)
 {
 	if (!ft_strncmp(input, "pwd", 3))  //pwd finished (why always displaying when no commands)
 		pwd('0');
@@ -33,6 +33,6 @@ void	exec_builtin(char *input, char **envp)
 	else
 	{
 		input = clear_quotes(input);
-		exec_builtin(data, envp);
+		exec_builtin(input, envp, data);
 	}
 }

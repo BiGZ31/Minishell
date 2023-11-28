@@ -29,8 +29,8 @@ int main(int ac, char **av, char **envp)
 		// if (ft_strchr(data->input, '|'))
 		// 	pipe();
 		//empty_prompt(&data);
-		if (check_builtin(&data) == IS_A_BUILTIN)
-			exec_builtin(&data, envp);
+		if (check_builtin(data.input) == IS_A_BUILTIN)
+			exec_builtin(data.input, envp);
 		else if (data.input[0])
 			forkf(data.input, &data, envp);
 		// printf("%c\n", data.input[0]);

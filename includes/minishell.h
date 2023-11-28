@@ -44,7 +44,7 @@ typedef struct	s_data
 char	*clear_quotes(char *str);
 // BUILT IN //
 
-void	exec_builtin(char *input, char **envp);
+void	exec_builtin(char *input, char **envp, t_data *data);
 int		check_builtin(char *input);
 
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 // static int	echo_compare(char *str)
 // {

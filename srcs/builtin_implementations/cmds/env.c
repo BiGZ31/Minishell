@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/minishell.h"
+# include "../../../includes/minishell.h"
 
 void	env(char **envp)// add the function when you moove path it also mooves
 {

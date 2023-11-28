@@ -11,28 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "../../includes/minishell.h"
-
-// static int	comp(char *str)
-// {
-// 	if(str[0] == 'c' && str[1] == 'd')
-// 		return (1);
-// 	return (0);
-// }
-
-static int	check_file(char *folder)
-{
-	int i;
-
-	i = 0;
-	while(folder[i])
-	{
-		if (folder[i] == ' ' && folder[i + 1] != ' ')
-			printf("Error: Folder not found.\n");
-		i++;
-	}
-	return (0);
-}
+#include "../../../includes/minishell.h"
 
 static int exists(char *file)
 {
@@ -79,8 +58,10 @@ void	cd(char *str)
 	i = 0;
 	while(str[i] != ' ' && str[i])
 		i++;
+	//skipping the first word  (cd ) (args)
 	while(str[i] == ' ' && str[i])
 		i++;
+	//jumping spaces
 	start = i;
 	while(str[i])
 		i++;
@@ -93,7 +74,6 @@ void	cd(char *str)
 		start++;
 		i++;
 	}
-	check_file(new);
 	chdir(new);
 	if (new[0] != '.' && new[1] != '.') //	trying to fix the cd ..
 		exists(new);

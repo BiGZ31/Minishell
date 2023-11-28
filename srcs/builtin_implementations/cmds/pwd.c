@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-#include "../../includes/minishell.h"
+#include "../../../includes/minishell.h"
 
 char	*pwd(int i)
 {

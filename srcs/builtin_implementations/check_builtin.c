@@ -23,7 +23,7 @@ int	check_builtin(char *input)
 	else
 	{
 		input = clear_quotes(input);
-		return (check_builtin(data));
+		return (check_builtin(input));
 	}
 	return (IS_NOT_A_BUILTIN);
 }
