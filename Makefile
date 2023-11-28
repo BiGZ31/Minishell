@@ -14,6 +14,7 @@ endif
 VPATH = srcs:\
 	srcs/main_functions:\
 	srcs/builtin_implementations:\
+	srcs/builtin_implementations/cmds:\
 	srcs/builtin_implementations/pipe_only:\
 	srcs/signals:\
 	srcs/parsing:\
