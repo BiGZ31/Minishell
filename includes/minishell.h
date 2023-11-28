@@ -21,6 +21,7 @@
 # include <sys/wait.h>
 # include <dirent.h>
 # include <fcntl.h>
+# include <zlib.h>
 # include "libft.h"
 # include "enums.h"
 # include "graphic.h"

@@ -22,7 +22,7 @@ CFLAGS = -Werror -Wextra -Wall
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline
+	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lz -lreadline
 
 $(OBJS_DIR)/%.o: %.c
 	@if [ ! -d $(OBJS_DIR) ]; then \
