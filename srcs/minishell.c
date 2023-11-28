@@ -21,7 +21,8 @@ int main(int ac, char **av, char **envp)
 	ignore_ac_av(ac, av);
 	get_path(&data, envp);
 	welcome_message();
-	signal(SIGINT, ctrlDHandler);
+	signal(SIGINT, ctrlCHandler);
+	signal(SIGQUIT, ctrlBackslashHandler);
 	while ((data.input = readline("➜ \e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊•\e[0m : ")) != NULL)
 	{
 		add_history(data.input);

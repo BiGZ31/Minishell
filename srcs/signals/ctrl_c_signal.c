@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	ctrlDHandler(int signum)
+void	ctrlCHandler(int signum)
 {
 	(void)	signum;
     printf("\n");
