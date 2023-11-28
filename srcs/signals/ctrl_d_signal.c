@@ -1,6 +1,8 @@
 #include "minishell.h"
 
-void	ctrl_d(void)
+void	ctrlDHandler(int signum)
 {
-	
+	(void)	signum;
+    printf("\nCtrl-D pressed. Exiting...\n");
+    exit(0);
 }

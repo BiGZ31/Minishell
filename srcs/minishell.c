@@ -19,13 +19,11 @@ int main(int ac, char **av, char **envp)
 	t_data data;
 	ft_bzero((void *) &data, sizeof(data));
 	ignore_ac_av(ac, av);
-	welcome_message();
-	printf("BITE\n");
 	get_path(&data, envp);
-
-	while (1)
+	welcome_message();
+	signal(SIGINT, ctrlDHandler);
+	while ((data.input = readline("➜ \e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊•\e[0m : ")) != NULL)
 	{
-		data.input = readline("➜ \e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊•\e[0m : ");
 		add_history(data.input);
 		// if (ft_strchr(data->input, '|'))
 		// 	pipe();

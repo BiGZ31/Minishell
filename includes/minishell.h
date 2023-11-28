@@ -50,7 +50,8 @@ int		check_builtin(t_data *data);
 
 
 
-
+/*SIGNALS*/
+void	ctrlDHandler(int signum);
 
 
 /* CD FILE*/
