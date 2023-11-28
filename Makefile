@@ -4,6 +4,12 @@ LIBFT = $(LIBS_DIR)/libft.a
 OBJS_DIR = objs
 INCS_DIR = includes
 
+ifeq ($(shell uname), Darwin)
+    RPATH_FLAGS = -Wl,-install_name,@rpath -Wl,-rpath,@executable_path
+else
+    RPATH_FLAGS = -Wl,-rpath='$$ORIGIN'
+endif
+
 VPATH = srcs:\
 	srcs/main_functions:\
 	srcs/builtin_implementations:\
@@ -22,8 +28,7 @@ CFLAGS = -Werror -Wextra -Wall
 all: $(LIBFT) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline -lz -Wl,-rpath='$ORIGIN'
-
+	$(CC) $(CFLAGS) -g $(OBJS) -o $@ -L $(LIBS_DIR) -lft -lreadline -lz $(RPATH_FLAGS)
 $(OBJS_DIR)/%.o: %.c
 	@if [ ! -d $(OBJS_DIR) ]; then \
 		mkdir $(OBJS_DIR);          \
