@@ -45,6 +45,7 @@ void	forkf(char *cmd, t_data *data, char **envp)
 			break;
 		else if (access(exec_path, F_OK) && !envp[i + 1])
 		{
+			free(exec_path);
 			exec_path = NULL;
 			break ;
 		}
@@ -58,7 +59,10 @@ void	forkf(char *cmd, t_data *data, char **envp)
 		if (id == 0)
 			execve(exec_path, data->fork.cmd_args, envp);
 		else
+		{
 			waitpid(0, NULL, 0);
+			free(exec_path);
+		}
 	}
 	else
 		printf("KawaiiShell: command not found: %s\n", data->fork.cmd_no_args);
