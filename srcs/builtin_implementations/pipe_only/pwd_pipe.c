@@ -1,6 +1,6 @@
 #include "../../../includes/minishell.h"
 
-char	*pwd_pipe(int i)
+char	*pwd_pipe(void)
 {
 	char *buf;
 	buf=(char *)malloc(100*sizeof(char));

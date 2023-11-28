@@ -40,9 +40,8 @@ static int exists(char *file)
 		start++;
 		i++;
 	}
-	if (ft_strncmp(file, temp, ft_strlen(temp)) == 0) // we need to add a temp with a "\"" in the end also remove the spaces at the end 
+	if (ft_strncmp(file, temp, ft_strlen(file)) == 1) // we need to add a temp with a "\"" in the end also remove the spaces at the end 
 		printf("Error: Folder not found.\n");
-	//printf("file = %s\n", file);
 	free(temp);
 	free(pwd_path);
 	return (0);

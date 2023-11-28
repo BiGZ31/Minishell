@@ -30,7 +30,7 @@ int main(int ac, char **av, char **envp)
 		// 	pipe();
 		//empty_prompt(&data);
 		if (check_builtin(data.input) == IS_A_BUILTIN)
-			exec_builtin(data.input, envp);
+			exec_builtin(data.input, envp, &data);
 		else if (data.input[0])
 			forkf(data.input, &data, envp);
 		// printf("%c\n", data.input[0]);

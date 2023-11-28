@@ -16,6 +16,7 @@
 char	*pwd(int i)
 {
 	char *buf;
+
 	buf=(char *)malloc(100*sizeof(char));
 	getcwd(buf,100);
 	if (i != 5)
