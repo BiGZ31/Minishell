@@ -16,24 +16,24 @@
 
 int main(int ac, char **av, char **envp)
 {
-	t_data *data;
+	t_data data;
 	
-	ft_bzero(s, sizeof(data));
+	ft_bzero((void *) &data, sizeof(data));
+	ignore_ac_av(ac, av);
 	welcome_message();
+	get_path(&data, envp);
 	while (1)
 	{
-		(void) ac;
-		(void) av;
-		(void) envp;
-		data->input = readline("➜ \e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊•\e[0m : ");
-		add_history(input);
-		if (input == NULL || *input == '\0')
-		{
-			free(input);
-			continue ;
-		}
+		empty_prompt(&data);
+		data.input = readline("➜ \e[0;38;5;199mKawaii\e[0;38;5;44mShell \033[1;37m•⩊•\e[0m : ");
+		add_history(data.input);
+		// if (ft_strchr(data->input, '|'))
+		// 	pipe();
+		if (check_builtin(&data) == IS_A_BUILTIN)
+			exec_builtin(&data, envp);
 		else
-			check_if_builtin_and_exec(input, envp);
-    }
+			forkf(data.input, &data, envp);
+		
+	}
     return 0;
 }
