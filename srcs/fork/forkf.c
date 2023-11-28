@@ -8,9 +8,33 @@ void	forkf(char *cmd, t_data *data, char **envp)
 
 	exec_path = NULL;
 	i = 0;
+	printf("cmd before = %s\n", cmd);
+	if (ft_strchr(cmd, '.'))
+	{
+		id = fork();
+		if (id == 0)
+		{
+			// free(data->input);
+			// data->input = NULL;
+			char *buf;
+			buf=(char *)malloc(100*sizeof(char));
+			getcwd(buf,100);
+			printf("cmd after = %s\n", cmd);
+			cmd = cmd + 1;
+			cmd = ft_strjoin(buf, cmd);
+			printf("path join  = %s\n", cmd);
+			char *argv[] = {cmd, NULL};
+			execve(cmd, argv, envp);
+			perror("execve");
+        	exit(EXIT_FAILURE);
+		}
+		else
+			waitpid(0, NULL, 0);
+		printf("cmd after2 = %s\n", cmd);
+		return ;
+	}
 	data->fork.cmd_args = ft_split(cmd, ' ');
 	cmd_no_args(cmd, data);
-
 	while(data->path[i])
 	{
 		//printf("cmd no args = %s\n", data->fork.cmd_no_args);
