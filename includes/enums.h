@@ -11,7 +11,7 @@ enum	access
 {
 	FOUND_BINARY,
 	FAIL
-}
+};
 
 
 

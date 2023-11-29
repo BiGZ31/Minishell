@@ -2,6 +2,7 @@
 
 void	fork_sys(char *cmd, t_data *data, char **envp)
 {
+	(void) cmd;
 	int	i;
 	char	*temps_to_free;
 	char	*exec_path;
@@ -21,17 +22,17 @@ void	fork_sys(char *cmd, t_data *data, char **envp)
 		free(exec_path);
 		return ;
 	}
-	data->id = fork();
-	if (data->id == 0)
+	data->fork.id = fork();
+	if (data->fork.id == 0)
 		execve(exec_path, data->fork.cmd_args, envp);
 	else
 	{
-		waitpid(data->id, NULL, 0);
+		waitpid(data->fork.id, NULL, 0);
 		free(exec_path);
 		free(data->fork.cmd_args);
 		free(data->fork.cmd_no_args);
 		data->fork.cmd_args = NULL;
-		data->forks.cmd_no_args = NULL;
+		data->fork.cmd_no_args = NULL;
 	}
 }
 
@@ -47,18 +48,18 @@ void	fork_other_binary(char *cmd, t_data *data, char **envp, char *pwd)
 		exec_path = cmd_no_dot;
 	else
 		exec_path = ft_strjoin(pwd, cmd_no_dot);
-	data->id = fork();
-	if (data->id == 0)
+	data->fork.id = fork();
+	if (data->fork.id == 0)
 		execve(exec_path, data->fork.cmd_args, envp);
 	else
 	{
-		waitpid(data->id, NULL, 0);
+		waitpid(data->fork.id, NULL, 0);
 		free(exec_path);
 		free(cmd_no_dot);
 		free(data->fork.cmd_args);
 		free(data->fork.cmd_no_args);
 		data->fork.cmd_args = NULL;
-		data->forks.cmd_no_args = NULL;
+		data->fork.cmd_no_args = NULL;
 	}
 }
 // cmp_len and the frist if it's to check if the full path is given
@@ -66,13 +67,13 @@ void	fork_other_binary(char *cmd, t_data *data, char **envp, char *pwd)
 void	forkv2(char *cmd, t_data *data, char **envp)
 {
 	char	*pwd;
-	int		i;
+	// int		i;
 
-	i = 0;
+	// i = 0;
 	pwd = pwd_pipe();
 	cmd_args(cmd, data);
 	cmd_no_args(cmd, data);
-	if (cmd[0] '.')
+	if (cmd[0] == '.')
 		fork_other_binary(cmd, data, envp, pwd);
 	else
 		fork_sys(cmd, data, envp);

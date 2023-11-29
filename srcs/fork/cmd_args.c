@@ -6,7 +6,7 @@ void    cmd_args(char *cmd, t_data *data)
 		data->fork.cmd_args = ft_split(cmd, ' ');
 	else
 	{
-		data->fork.cmd_args[0] = ft_substr(cmd);
+		data->fork.cmd_args[0] = ft_strdup(cmd);
 		data->fork.cmd_args[1] = NULL;
 	}
 }
