@@ -29,7 +29,7 @@ void	exec_builtin(char *input, char **envp, t_data *data)
 	else if ((!ft_strncmp(input, "echo -n", 8))) //echo -n (needs fix)
 		echon(input);
 	else if (!ft_strncmp(input, "export", 6))
-		export();
+		export(envp);
 	else
 	{
 		input = clear_quotes(input);

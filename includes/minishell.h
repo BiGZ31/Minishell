@@ -70,7 +70,7 @@ void echon(char *str);
 void echo(char *str);
 
 /*EXPORT FILE*/
-void export(void);
+void	export(char **envp);
 
 //PIPE//
 char	*pwd_pipe(void);
