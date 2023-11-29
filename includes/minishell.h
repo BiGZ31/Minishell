@@ -30,6 +30,7 @@ typedef struct	s_fork
 {
     char	*cmd_no_args;
 	char	**cmd_args;
+	pid_t	id;
 }				t_fork;
 
 typedef struct	s_data
@@ -71,17 +72,20 @@ void echo(char *str);
 /*EXPORT FILE*/
 void export(void);
 
-
+//PIPE//
+char	*pwd_pipe(void);
 
 // FORK //
 void	get_path(t_data *data, char **envp);
 void    cmd_no_args(char *cmd, t_data *data);
-void	forkf(char *cmd, t_data *data, char **envp);
+void    cmd_args(char *cmd, t_data *data);
+void	forkv2(char *cmd, t_data *data, char **envp);
 
 
 // TOOLS //
 void	empty_prompt(t_data *data);
 void	ignore_ac_av(int ac, char **av);
+char	*remove_frist_char_in_string(char *str);
 
 
 void 	help(void);

@@ -32,7 +32,7 @@ int main(int ac, char **av, char **envp)
 		if (check_builtin(data.input) == IS_A_BUILTIN)
 			exec_builtin(data.input, envp, &data);
 		else if (data.input[0])
-			forkf(data.input, &data, envp);
+			forkv2(data.input, &data, envp);
 		// printf("%c\n", data.input[0]);
 		// printf("%s\n", data.input);
 	}
