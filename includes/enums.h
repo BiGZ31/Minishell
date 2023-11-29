@@ -9,8 +9,8 @@ enum	builtin
 
 enum	access
 {
-	FOUND_BINARY,
-	FAIL
+	FAIL = -1,
+	FOUND_BINARY
 };
 
 

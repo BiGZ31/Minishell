@@ -86,6 +86,7 @@ void	forkv2(char *cmd, t_data *data, char **envp);
 void	empty_prompt(t_data *data);
 void	ignore_ac_av(int ac, char **av);
 char	*remove_frist_char_in_string(char *str);
+void    free_fork_set_null(t_data *data);
 
 
 void 	help(void);
