@@ -102,6 +102,19 @@ void    add_arg(char *arg, t_data *data)
     data->export_size++;
 }
 
+int	check_arg(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while(arg[i])
+	{
+		if (arg[i] == '=')
+			return (ARG_HAS_EQUAL);
+		i++;
+	}
+}
+
 void export(char **envp, char *input, t_data *data)
 {
     char *arg;
@@ -135,7 +148,13 @@ void export(char **envp, char *input, t_data *data)
     else
     {
         arg = split(input);
-        add_arg(arg, data);
+		if (check_arg(arg) == ARG_HAS_EQUAL)
+        	add_arg(arg, data);
+		else
+		{
+			arg = add_equaltoarg(arg);
+			add_arg(arg, data);
+		}
     }  
 }
 

@@ -13,6 +13,12 @@ enum	export
 	HAS_NO_ARG
 };
 
+enum	export_arg
+{
+	ARG_HAS_EQUAL,
+	ARG_HAS_NO_EQUAL
+};
+
 enum	access
 {
 	FAIL = -1,
