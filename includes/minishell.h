@@ -73,7 +73,9 @@ void echo(char *str);
 
 /*EXPORT FILE*/
 void export(char **envp, char *input, t_data *data);
-
+void bubbleSort(char **arr, int size);
+void swap(char **a, char **b);
+void    create_export(t_data *data, char **envp);
 //PIPE//
 char	*pwd_pipe(void);
 

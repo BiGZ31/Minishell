@@ -19,7 +19,7 @@ void	fork_sys(t_data *data, char **envp)
 	}
 	if (access(exec_path, F_OK) == FAIL)
 	{
-		printf("KawaiiShell: command not found: %s\n", data->fork.cmd_no_args);
+		printf("%sKawaiiShell: command not found: %s%s\n", RED, RESET, data->fork.cmd_no_args);
 		free(exec_path);
 		free_fork_set_null(data);
 		return ;
@@ -57,7 +57,7 @@ void	fork_other_binary(t_data *data, char **envp, char *pwd)
 	}
 	else
 	{
-		printf("KawaiiShell: command not found: %s\n", data->fork.cmd_no_args);
+		printf("%sKawaiiShell: command not found: %s%s\n", RED, RESET, data->fork.cmd_no_args);
 		free(exec_path);
 		free(cmd_no_dot);
 		free_fork_set_null(data);
@@ -101,7 +101,7 @@ void	forkv2(char *cmd, t_data *data, char **envp)
 		}
 		else
 		{
-			printf("KawaiiShell: command not found: %s\n", data->fork.cmd_no_args);
+			printf("%sKawaiiShell: command not found: %s%s\n", RED, RESET, data->fork.cmd_no_args);
 			free(pwd);
 			free_fork_set_null(data);
 			return ;
@@ -110,7 +110,7 @@ void	forkv2(char *cmd, t_data *data, char **envp)
 	else if (cmd[0] == '.' && cmd[1])
 	{
 		if (cmd[1] == '.')
-			printf("KawaiiShell: command not found: .\n");
+			printf("%sKawaiiShell: command not found: %s\n", RED, RESET);;
 
 	//	printf("bitexxxxxxxxxxxxxxxxx\n");
 		fork_other_binary(data, envp, pwd);

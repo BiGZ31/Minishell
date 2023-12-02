@@ -5,6 +5,7 @@
 # define PINK "\e[0;38;5;199m"
 # define BLUE "\e[0;34m"
 # define G_BLUE "\e[0;38;5;24m"
+# define RED "\033[91m"
 # define YELLOW "\033[1;33m"
 # define B_BLUE "\e[1;34m"
 # define G_CYAN "\e[0;38;5;44m"

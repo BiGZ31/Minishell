@@ -12,50 +12,6 @@
 
 #include "../../../../includes/minishell.h"
 
-void swap(char **a, char **b)
-{
-    char *temp;
-
-	temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-void bubbleSort(char **arr, int size)
-{
-    int sorted;
-	
-	sorted = 0;
-    while (!sorted)
-    {
-        sorted = 1;
-        int i = 0;
-        while (i < size - 1)
-        {
-            if (ft_strncmp(arr[i], arr[i + 1], ft_strlen(arr[1])) > 0)
-            {
-                swap(&arr[i], &arr[i + 1]);
-                sorted = 0;
-            }
-            i++;
-        }
-        size--;
-    }
-}
-
-void	free_exprt(char **exprt, int size)
-{
-	int	i;
-
-	i = 0;
-    while (i < size)
-    {
-        free(exprt[i]);
-        i++;
-    }
-    free(exprt);
-}
-
 int check_input(char    *input)
 {
     int i;
@@ -92,13 +48,12 @@ char *split(char *input)
     return arg;
 }
 
-
 void    add_arg(char *arg, t_data *data)
 {
     
     data->exprt[data->export_size] = malloc(sizeof(char) * ft_strlen(arg) + 1);
     data->exprt[data->export_size] = ft_strdup(arg);
-    printf("Argument added corectly.\n");
+    printf("Variable created corectly.\n");
     data->export_size++;
 }
 
@@ -113,30 +68,17 @@ int	check_arg(char *arg)
 			return (ARG_HAS_EQUAL);
 		i++;
 	}
+    return (ARG_HAS_NO_EQUAL);
 }
 
 void export(char **envp, char *input, t_data *data)
 {
     char *arg;
     int i;
-    int size;
 
     i = 0;
-    size = 0;
-    while (envp[size])
-        size++;
     if (!data->exprt)
-    {
-        data->exprt = malloc(sizeof(char *) * 100);
-        while (envp[i])
-        {
-            data->exprt[i] = ft_strdup(envp[i]);
-            i++;
-        }
-        bubbleSort(data->exprt, size);
-        data->export_size = i;
-        i = 0;
-    }
+        create_export(data, envp);
     if (check_input(input) == HAS_NO_ARG)
     {
         while (i < data->export_size)
@@ -152,7 +94,7 @@ void export(char **envp, char *input, t_data *data)
         	add_arg(arg, data);
 		else
 		{
-			arg = add_equaltoarg(arg);
+			//arg = add_equaltoarg(arg);
 			add_arg(arg, data);
 		}
     }  
