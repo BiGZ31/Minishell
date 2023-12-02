@@ -19,6 +19,12 @@ enum	export_arg
 	ARG_HAS_NO_EQUAL
 };
 
+enum	export_brackets
+{
+	ARG_HAS_BRACKETS,
+	ARG_HAS_NO_BRACKETS
+};
+
 enum	access
 {
 	FAIL = -1,

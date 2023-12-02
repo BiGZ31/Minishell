@@ -35,6 +35,8 @@ char *split(char *input)
     i = 0;
     while (input[i] != ' ' && input[i])
         i++;
+	while(input[i] && input[i] == ' ')
+		i++;
     start = i;
     arg = malloc(sizeof(char) * (ft_strlen(input) - start) + 1);
     i = 0;
@@ -71,30 +73,113 @@ int	check_arg(char *arg)
     return (ARG_HAS_NO_EQUAL);
 }
 
+char	*add_equaltoarg(char *arg)
+{
+	int		i;
+	char	*temp;
+
+	i = 0;
+	while(arg[i])
+		i++;
+	temp = malloc(sizeof(char) * ft_strlen(arg) + 4);
+	temp = ft_strdup(arg);
+	temp[i] = '=';
+	i++;
+	temp[i] = '\'';
+	i++;
+	temp[i] = '\'';
+	i++;
+	temp[i] = '\0';
+	//printf("temp = %s\n", temp);
+	return (temp);
+}
+
+char	*change_brackets(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while(arg[i])
+	{
+		if (arg[i] == '"')
+			arg[i] = '\'';
+		i++;
+	}
+	return (arg);
+}
+
+int	arg_has_brackets(char *arg)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while(arg[i])
+	{
+		if (arg[i] == '"')
+			count++;
+		if (count == 2)
+			return (ARG_HAS_BRACKETS);
+		i++;
+	}
+	return (ARG_HAS_NO_BRACKETS);
+}
+
+char	*split_no_brackets(char *arg)
+{
+	int	i;
+	int	size;
+	char	*temp;
+
+	size = 0;
+	while(arg[size] && arg[size] != ' ')
+		size++;
+	temp = malloc(sizeof(char) * (size + 1));
+	i = 0;
+	while(i < size)
+	{
+		temp[i] = arg[i];
+		i++;
+	}
+	temp[i] = '\0';
+	return (temp);
+}
+
+void	print_export(t_data	*data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->export_size)
+	{
+		printf("%s\n", data->exprt[i]);
+		i++;
+	}
+}
+
 void export(char **envp, char *input, t_data *data)
 {
     char *arg;
-    int i;
 
-    i = 0;
     if (!data->exprt)
         create_export(data, envp);
     if (check_input(input) == HAS_NO_ARG)
-    {
-        while (i < data->export_size)
-        {
-            printf("%s\n", data->exprt[i]);
-            i++;
-        }
-    }
+		print_export(data);
     else
     {
         arg = split(input);
+		if (arg_has_brackets(arg) == ARG_HAS_NO_BRACKETS)
+			arg = split_no_brackets(arg);
 		if (check_arg(arg) == ARG_HAS_EQUAL)
-        	add_arg(arg, data);
+		{
+			if (arg_has_brackets(arg) == ARG_HAS_BRACKETS)
+				arg = change_brackets(arg);
+			add_arg(arg, data);
+		}
 		else
 		{
-			//arg = add_equaltoarg(arg);
+			arg = add_equaltoarg(arg);
 			add_arg(arg, data);
 		}
     }  
