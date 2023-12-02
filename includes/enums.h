@@ -7,6 +7,12 @@ enum	builtin
 	IS_NOT_A_BUILTIN
 };
 
+enum	export
+{
+	HAS_ARG,
+	HAS_NO_ARG
+};
+
 enum	access
 {
 	FAIL = -1,

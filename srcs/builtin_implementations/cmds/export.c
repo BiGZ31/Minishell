@@ -56,9 +56,55 @@ void	free_exprt(char **exprt, int size)
     free(exprt);
 }
 
-void export(char **envp)
+int check_input(char    *input)
 {
-    char **exprt;
+    int i;
+
+    i = 0;
+    while(input[i])
+    {
+        if (input[i] == ' ' && input[i + 1] != ' ')
+            return (HAS_ARG);
+        i++;
+    }
+    return (HAS_NO_ARG);
+}
+
+char *split(char *input)
+{
+    int i;
+    int start;
+    char *arg;
+
+    i = 0;
+    while (input[i] != ' ' && input[i])
+        i++;
+    start = i;
+    arg = malloc(sizeof(char) * (ft_strlen(input) - start) + 1);
+    i = 0;
+    while (input[start])
+    {
+        arg[i] = input[start];
+        start++;
+        i++;
+    }
+    arg[i] = '\0';
+    return arg;
+}
+
+
+void    add_arg(char *arg, t_data *data)
+{
+    
+    data->exprt[data->export_size] = malloc(sizeof(char) * ft_strlen(arg) + 1);
+    data->exprt[data->export_size] = ft_strdup(arg);
+    printf("Argument added corectly.\n");
+    data->export_size++;
+}
+
+void export(char **envp, char *input, t_data *data)
+{
+    char *arg;
     int i;
     int size;
 
@@ -66,21 +112,33 @@ void export(char **envp)
     size = 0;
     while (envp[size])
         size++;
-    exprt = malloc(sizeof(char *) * 100);
-    while (envp[i])
+    if (!data->exprt)
     {
-        exprt[i] = ft_strdup(envp[i]);
-        i++;
+        data->exprt = malloc(sizeof(char *) * 100);
+        while (envp[i])
+        {
+            data->exprt[i] = ft_strdup(envp[i]);
+            i++;
+        }
+        bubbleSort(data->exprt, size);
+        data->export_size = i;
+        i = 0;
     }
-    bubbleSort(exprt, size);
-    i = 0;
-    while (exprt[i])
+    if (check_input(input) == HAS_NO_ARG)
     {
-        printf("%s\n", exprt[i]);
-        i++;
+        while (i < data->export_size)
+        {
+            printf("%s\n", data->exprt[i]);
+            i++;
+        }
     }
-	free_exprt(exprt, size);
+    else
+    {
+        arg = split(input);
+        add_arg(arg, data);
+    }  
 }
+
 
 
 

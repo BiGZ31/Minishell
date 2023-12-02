@@ -36,6 +36,8 @@ typedef struct	s_fork
 typedef struct	s_data
 {
 	char	*input;
+	char	**exprt;
+	int		export_size;
     t_fork  fork;
 	char	**path;
 	int		*pipex;
@@ -70,7 +72,7 @@ void echon(char *str);
 void echo(char *str);
 
 /*EXPORT FILE*/
-void	export(char **envp);
+void export(char **envp, char *input, t_data *data);
 
 //PIPE//
 char	*pwd_pipe(void);
@@ -87,6 +89,7 @@ void	empty_prompt(t_data *data);
 void	ignore_ac_av(int ac, char **av);
 char	*remove_frist_char_in_string(char *str);
 void    free_fork_set_null(t_data *data);
+int    check_dots_input(char *input);
 
 
 void 	help(void);

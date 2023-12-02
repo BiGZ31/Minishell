@@ -7,6 +7,7 @@ void	fork_sys(t_data *data, char **envp)
 	char	*exec_path;
 	
 	i = 0;
+	//printf("bite\n");
 	while (data->path[i])
 	{
 		temps_to_free = ft_strjoin(data->path[i], "/");
@@ -69,9 +70,19 @@ void	forkv2(char *cmd, t_data *data, char **envp)
 	char	*pwd;
 	int		cmp_len;
 
+	// int 	i;
+
+	//i = 0;
 	pwd = pwd_pipe();
 	cmd_args(cmd, data);
 	cmd_no_args(cmd, data);
+	// printf("pwd : %s\n", pwd);
+	// while (data->fork.cmd_args[i])
+	// {
+	// 	printf("cmd_args %d : %s\n", i, data->fork.cmd_args[i]);
+	// 	i++;
+	// }
+	// printf("cmd_no_args: %s\n", data->fork.cmd_no_args);
 	cmp_len = ft_strlen(data->fork.cmd_no_args) - ft_strlen(ft_strchr(pwd, '/'));
 	if (!ft_strncmp(data->fork.cmd_no_args, pwd, cmp_len))
 	{
@@ -96,8 +107,14 @@ void	forkv2(char *cmd, t_data *data, char **envp)
 			return ;
 		}
 	}
-	else if (cmd[0] == '.')
+	else if (cmd[0] == '.' && cmd[1])
+	{
+		if (cmd[1] == '.')
+			printf("KawaiiShell: command not found: .\n");
+
+	//	printf("bitexxxxxxxxxxxxxxxxx\n");
 		fork_other_binary(data, envp, pwd);
+	}
 	else
 		fork_sys(data, envp);
 }

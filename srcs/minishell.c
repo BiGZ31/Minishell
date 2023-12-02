@@ -28,13 +28,11 @@ int main(int ac, char **av, char **envp)
 		add_history(data.input);
 		// if (ft_strchr(data->input, '|'))
 		// 	pipe();
-		//empty_prompt(&data);
+		// empty_prompt(&data);
 		if (check_builtin(data.input) == IS_A_BUILTIN)
 			exec_builtin(data.input, envp, &data);
 		else if (data.input[0])
 			forkv2(data.input, &data, envp);
-		// printf("%c\n", data.input[0]);
-		// printf("%s\n", data.input);
 	}
     return 0;
 }
