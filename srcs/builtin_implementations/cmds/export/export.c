@@ -169,6 +169,8 @@ void export(char **envp, char *input, t_data *data)
     else
     {
         arg = split(input);
+		if (arg_already_a_variable(arg))
+			reset_variable(arg, data);
 		if (arg_has_brackets(arg) == ARG_HAS_NO_BRACKETS)
 			arg = split_no_brackets(arg);
 		if (check_arg(arg) == ARG_HAS_EQUAL)
