@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-int	is_it_a_real_pipe()
-{
+// int	is_it_a_real_pipe()
+// {
 	
-}
+// }

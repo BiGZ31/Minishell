@@ -49,7 +49,7 @@ int	arg_is_a_path(char *arg)
 	i = 0;
 	while(arg[i])
 	{
-		if (arg[i] == '$')
+		if (arg[i] == '$' && arg[i - 1] != '\\')
 			return (1);
 		i++;
 	}
@@ -68,6 +68,7 @@ char *compare_path(t_data *data, char *path, char *arg)
 			printf("path exist's\n");
 		i++;
 	}
+	return (arg);
 }
 
 char	*create_arg_with_path(t_data *data, char *arg)

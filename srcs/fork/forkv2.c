@@ -69,7 +69,7 @@ void	fork_other_binary(t_data *data, char **envp, char *pwd)
 	}
 	else
 	{
-		printf("%s: command not found\n", RED, RESET, data->fork.cmd_no_args);
+		printf("%s: command not found%s\n", RED, RESET);
 		free(exec_path);
 		free(cmd_no_dot);
 		free_fork_set_null(data);
@@ -113,7 +113,7 @@ void	forkv2(char *cmd, t_data *data, char **envp)
 		}
 		else
 		{
-			printf("%s: command not found:\n", RED, RESET, data->fork.cmd_no_args);
+			printf("%s: command not found:%s%s\n", RED, data->fork.cmd_no_args, RESET);
 			free(pwd);
 			free_fork_set_null(data);
 			return ;
