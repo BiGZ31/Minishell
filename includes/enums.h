@@ -25,6 +25,12 @@ enum	export_brackets
 	ARG_HAS_NO_BRACKETS
 };
 
+enum	export_variable_check
+{
+	VAR_EXISTS,
+	VAR_DOES_NOT_EXIST,
+};
+
 enum	access
 {
 	FAIL = -1,

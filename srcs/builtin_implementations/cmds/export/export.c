@@ -158,6 +158,71 @@ void	print_export(t_data	*data)
 	}
 }
 
+void	reset_variable(char *arg, t_data *data)
+{
+	int	e;
+	int	i;
+	int	j;
+
+	j = 0;
+	e = 0;
+	while(arg[e])
+	{
+		if (arg[e] == '=')
+			break;
+		e++;
+	}
+	while(data->exprt[j])
+	{
+		i = 0;
+		while(data->exprt[j][i])
+		{
+			if (data->exprt[j][i] == '=')
+				break;
+			i++;
+		}
+		if (ft_strncmp(arg, data->exprt[j], e) == 0 && ft_strncmp(arg, data->exprt[j], i) == 0)
+		{
+			free(data->exprt[j]);
+			data->exprt[j] = malloc(sizeof(char) * ft_strlen(arg) + 1);
+    		data->exprt[j] = ft_strdup(arg);
+		}
+		j++;
+	}
+	printf("Variable replaced !\n");
+}
+
+int	arg_already_a_variable(t_data *data, char *arg)
+{
+	int	e;
+	int	i;
+	int	j;
+
+
+	j = 0;
+	e = 0;
+	while(arg[e])
+	{
+		if (arg[e] == '=')
+			break;
+		e++;
+	}
+	while(data->exprt[j])
+	{
+		i = 0;
+		while(data->exprt[j][i])
+		{
+			if (data->exprt[j][i] == '=')
+				break;
+			i++;
+		}
+		if (ft_strncmp(arg, data->exprt[j], e) == 0 && ft_strncmp(arg, data->exprt[j], i) == 0)
+				return (VAR_EXISTS);
+		j++;
+	}
+	return (VAR_DOES_NOT_EXIST);
+}
+
 void export(char **envp, char *input, t_data *data)
 {
     char *arg;
@@ -169,20 +234,25 @@ void export(char **envp, char *input, t_data *data)
     else
     {
         arg = split(input);
-		// if (arg_already_a_variable(arg))
-		// 	reset_variable(arg, data);
+		
 		if (arg_has_brackets(arg) == ARG_HAS_NO_BRACKETS)
 			arg = split_no_brackets(arg);
 		if (check_arg(arg) == ARG_HAS_EQUAL)
 		{
 			if (arg_has_brackets(arg) == ARG_HAS_BRACKETS)
 				arg = change_brackets(arg);
-			add_arg(arg, data);
+			if (arg_already_a_variable(data, arg) == VAR_EXISTS)
+				reset_variable(arg, data);
+			else
+				add_arg(arg, data);
 		}
 		else
 		{
 			arg = add_equaltoarg(arg);
-			add_arg(arg, data);
+			if (arg_already_a_variable(data, arg) == VAR_EXISTS)
+				reset_variable(arg, data);
+			else
+				add_arg(arg, data);
 		}
     }  
 }
