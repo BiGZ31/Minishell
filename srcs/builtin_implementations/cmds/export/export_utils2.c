@@ -107,5 +107,5 @@ void	reset_variable(char *arg, t_data *data)
 		}
 		j++;
 	}
-	printf("Variable replaced !\n");
+	printf("%sVariable replaced.%s\n", YELLOW, RESET);
 }

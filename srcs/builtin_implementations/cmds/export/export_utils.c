@@ -55,7 +55,7 @@ void    add_arg(char *arg, t_data *data)
     
     data->exprt[data->export_size] = malloc(sizeof(char) * ft_strlen(arg) + 1);
     data->exprt[data->export_size] = ft_strdup(arg);
-    printf("Variable created corectly.\n");
+    printf("%sVariable created corectly.%s\n", BLUE, RESET);
     data->export_size++;
 }
 

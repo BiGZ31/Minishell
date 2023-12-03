@@ -6,18 +6,6 @@
 /*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:55:47 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/12/03 14:22:59 by lumontgo         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   export.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 16:55:47 by lumontgo          #+#    #+#             */
 /*   Updated: 2023/12/03 14:21:40 by lumontgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -54,6 +42,68 @@ int	arg_already_a_variable(t_data *data, char *arg)
 	return (VAR_DOES_NOT_EXIST);
 }
 
+int	arg_is_a_path(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while(arg[i])
+	{
+		if (arg[i] == '$')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+char *compare_path(t_data *data, char *path, char *arg)
+{
+	int	i;
+
+	printf("%zu\n", ft_strlen(path));
+	i = 0;
+	while(data->exprt[i])
+	{
+		if (ft_strncmp(data->exprt[i], path, ft_strlen(path) == 0))
+			printf("path exist's\n");
+		i++;
+	}
+}
+
+char	*create_arg_with_path(t_data *data, char *arg)
+{
+	int	i;
+	int	len;
+	int	start;
+	char	*temp;
+
+	i = 0;
+	while(arg[i])
+	{
+		if (arg[i] == '$')
+			break;
+		i++;
+	}
+	start = i + 1;
+	len = 0;
+	while(arg[i] != ' ')
+	{
+		len++;
+		i++;
+	}
+	temp = malloc(sizeof(char) * len + 1);
+	i = 0;
+	while(i < len)
+	{
+		temp[i] = arg[start];
+		start++;
+		i++;
+	}
+	temp[i] = '\0';
+	printf("path = %s\n", temp);
+	return (compare_path(data, temp, arg));
+}
+
 void export(char **envp, char *input, t_data *data)
 {
     char *arg;
@@ -72,6 +122,11 @@ void export(char **envp, char *input, t_data *data)
 		}
 		if (arg_has_brackets(arg) == ARG_HAS_NO_BRACKETS)
 			arg = split_no_brackets(arg);
+		if (arg_is_a_path(arg) == 1)
+		{
+			printf("arg has a path\n");
+			arg = create_arg_with_path(data, arg);
+		}
 		if (check_arg(arg) == ARG_HAS_EQUAL)
 		{
 			if (arg_has_brackets(arg) == ARG_HAS_BRACKETS)
