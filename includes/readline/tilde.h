@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tilde.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 22:35:32 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/11/28 22:35:32 by lumontgo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /* tilde.h: Externally available variables and function in libtilde.a. */
 
 /* Copyright (C) 1992-2009 Free Software Foundation, Inc.

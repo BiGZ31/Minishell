@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rlstdc.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 22:35:32 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/11/28 22:35:32 by lumontgo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /* stdc.h -- macros to make source compile on both ANSI C and K&R C compilers. */
 
 /* Copyright (C) 1993-2009 Free Software Foundation, Inc.

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rltypedefs.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 22:35:32 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/11/28 22:35:32 by lumontgo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /* rltypedefs.h -- Type declarations for readline functions. */
 
 /* Copyright (C) 2000-2011 Free Software Foundation, Inc.

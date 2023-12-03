@@ -3,6 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/02 16:55:47 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/12/03 14:23:53 by lumontgo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/02 16:55:47 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/12/02 16:55:47 by lumontgo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: lumontgo <lumontgo@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:42:32 by lumontgo          #+#    #+#             */
@@ -76,6 +100,20 @@ void export(char **envp, char *input, t_data *data);
 void bubbleSort(char **arr, int size);
 void swap(char **a, char **b);
 void    create_export(t_data *data, char **envp);
+char	*add_equaltoarg(char *arg);
+int	check_arg(char *arg);
+void    add_arg(char *arg, t_data *data);
+char *split(char *input);
+int check_input(char    *input);
+char	*change_brackets(char *arg);
+int	arg_has_brackets(char *arg);
+char	*split_no_brackets(char *arg);
+void	print_export(t_data	*data);
+void	reset_variable(char *arg, t_data *data);
+
+
+
+
 //PIPE//
 char	*pwd_pipe(void);
 

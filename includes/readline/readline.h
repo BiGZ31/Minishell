@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   readline.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/28 22:35:32 by lumontgo          #+#    #+#             */
+/*   Updated: 2023/11/28 22:35:32 by lumontgo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 /* Readline.h -- the names of functions callable from within readline. */
 
 /* Copyright (C) 1987-2020 Free Software Foundation, Inc.
