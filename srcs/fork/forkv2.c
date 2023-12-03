@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   forkv2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lumontgo  <lumontgo@student.42perpig>      +#+  +:+       +#+        */
+/*   By: apetre <apetre@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 16:55:47 by lumontgo          #+#    #+#             */
-/*   Updated: 2023/12/02 16:55:47 by lumontgo         ###   ########.fr       */
+/*   Created: 2023/12/03 17:40:25 by apetre            #+#    #+#             */
+/*   Updated: 2023/12/03 17:40:25 by apetre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	fork_sys(t_data *data, char **envp)
 	}
 	if (access(exec_path, F_OK) == FAIL)
 	{
-		printf("%sKawaiiShell: command not found: %s%s\n", RED, RESET, data->fork.cmd_no_args);
+		printf("%s: command not found\n", data->fork.cmd_no_args);
 		free(exec_path);
 		free_fork_set_null(data);
 		return ;
@@ -69,7 +69,7 @@ void	fork_other_binary(t_data *data, char **envp, char *pwd)
 	}
 	else
 	{
-		printf("%sKawaiiShell: command not found: %s%s\n", RED, RESET, data->fork.cmd_no_args);
+		printf("%s: command not found\n", RED, RESET, data->fork.cmd_no_args);
 		free(exec_path);
 		free(cmd_no_dot);
 		free_fork_set_null(data);
@@ -113,19 +113,21 @@ void	forkv2(char *cmd, t_data *data, char **envp)
 		}
 		else
 		{
-			printf("%sKawaiiShell: command not found: %s%s\n", RED, RESET, data->fork.cmd_no_args);
+			printf("%s: command not found:\n", RED, RESET, data->fork.cmd_no_args);
 			free(pwd);
 			free_fork_set_null(data);
 			return ;
 		}
 	}
-	else if (cmd[0] == '.' && cmd[1])
+	else if ((cmd[0] == '.' && cmd[1] != '.')
+		|| (cmd[0] == '.' && cmd[1] == '.' && !cmd[2]))
 	{
-		if (cmd[1] == '.')
-			printf("%sKawaiiShell: command not found: %s\n", RED, RESET);;
-
-	//	printf("bitexxxxxxxxxxxxxxxxx\n");
-		fork_other_binary(data, envp, pwd);
+		if (!cmd[1])
+			printf("KawaiiShell .: filename argument required\n.: usage: . filename [arguments]\n");
+		else if (cmd[1] == '.' && !cmd[2])
+			printf("..: command not found\n");
+		else
+			fork_other_binary(data, envp, pwd);
 	}
 	else
 		fork_sys(data, envp);
