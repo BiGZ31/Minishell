@@ -19,7 +19,7 @@ int check_input(char    *input)
     i = 0;
     while(input[i])
     {
-        if (input[i] == ' ' && input[i + 1] != ' ')
+        if (input[i] == ' ' && (input[i + 1] != ' ' && input[i + 1] != '\0'))
             return (HAS_ARG);
         i++;
     }
@@ -169,8 +169,8 @@ void export(char **envp, char *input, t_data *data)
     else
     {
         arg = split(input);
-		if (arg_already_a_variable(arg))
-			reset_variable(arg, data);
+		// if (arg_already_a_variable(arg))
+		// 	reset_variable(arg, data);
 		if (arg_has_brackets(arg) == ARG_HAS_NO_BRACKETS)
 			arg = split_no_brackets(arg);
 		if (check_arg(arg) == ARG_HAS_EQUAL)
@@ -187,19 +187,10 @@ void export(char **envp, char *input, t_data *data)
     }  
 }
 
+/*
 
+	find a strncmp of tthe lenght of the word when found = to the char *[1]of exprt
+	once found replace 
+	also try and do unvalid argument if only = and nothing before 
 
-
-
-	// while(envp[i])
-	// {
-	// 	j = 0;
-	// 	while(envp[i][j] == envp[i + 1][j])
-	// 		j++;
-	// 	if (envp[i][j] > envp[i + 1][j])
-	// 		ft_swap
-	// }
-
-// sort ENV en ordre ascii 
-// puis rajouter export test=eiuhfie
-//
+*/
