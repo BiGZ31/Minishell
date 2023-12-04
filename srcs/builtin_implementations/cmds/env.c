@@ -23,3 +23,6 @@ void	env(char **envp)// add the function when you moove path it also mooves
 		i++;
 	}
 }
+
+/*moove sh level up to one each time u launch minishell
+todo : eifhefs*/

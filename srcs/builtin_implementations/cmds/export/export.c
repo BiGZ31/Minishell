@@ -56,16 +56,97 @@ int	arg_is_a_path(char *arg)
 	return (0);
 }
 
+char	*join_everything(char *new_path, char *first_part, char *second_part)
+{
+	char *final;
+	char *temp;
+
+	temp = ft_strjoin(first_part, new_path);
+	final = ft_strjoin(temp, second_part);
+	free(temp);
+	free(first_part);
+	free(second_part);
+	return (final);
+}
+
+char	*creating_new_arg_with_path(char *first_part, char *second_part, char *path)
+{
+	int	i;
+	int	j;
+	int	len;
+	char *new_path;
+
+	i = 0;
+	while(path[i] != '=')
+		i++;
+	i++;
+	len = i;
+	while(path[len])
+		len++;
+	new_path = malloc(sizeof(char) * len);
+	j = 0;
+	while(j < len)
+	{
+		new_path[j] = path[i];
+		i++;
+		j++;
+	}
+	return (join_everything(new_path, first_part, second_part));
+}
+
+char	*add_path_to_arg(char *path, char *arg)
+{
+	int	i;
+	int j;
+	int len;
+	char	*first_part;
+	int	pos;
+	char	*second_part;
+
+	(void) path;
+	i = 0;
+	while(arg[i] != '$' && arg[i - 1] != '\\')
+		i++;
+	j = i;
+	first_part = malloc(sizeof(char) * j + 1);
+	j = 0;
+	while(j < i)
+	{
+		first_part[j] = arg[j];
+		j++;
+	}
+	printf("first part = %s\n", first_part);
+	while(arg[i] && arg[i] != ' ')
+		i++;
+	pos = i;
+	len = ft_strlen(arg) - pos;
+	second_part = malloc(sizeof(char) * len + 1);
+	i = 0;
+	while(i < len)
+	{
+		second_part[i] = arg[pos];
+		pos++;
+		i++;
+	}
+	printf("second part = %s\n", second_part);
+	return (creating_new_arg_with_path(first_part, second_part, path));
+}
+
 char *compare_path(t_data *data, char *path, char *arg)
 {
 	int	i;
-
-	printf("%zu\n", ft_strlen(path));
+	int	j;
+	j = 0;
 	i = 0;
+	while(path[j] && path[j] != ' ')
+	{
+		write(1, &path[j], 1);
+		j++;
+	}
 	while(data->exprt[i])
 	{
-		if (ft_strncmp(data->exprt[i], path, ft_strlen(path) == 0))
-			printf("path exist's\n");
+		if (ft_strncmp(data->exprt[i], path, j) == 0)
+			arg = add_path_to_arg(data->exprt[i], arg);
 		i++;
 	}
 	return (arg);
@@ -87,7 +168,7 @@ char	*create_arg_with_path(t_data *data, char *arg)
 	}
 	start = i + 1;
 	len = 0;
-	while(arg[i] != ' ')
+	while(arg[i] && (arg[i] != ' ' || arg[i] != '"'))
 	{
 		len++;
 		i++;
@@ -101,7 +182,7 @@ char	*create_arg_with_path(t_data *data, char *arg)
 		i++;
 	}
 	temp[i] = '\0';
-	printf("path = %s\n", temp);
+	printf("temp= %s\n", temp);
 	return (compare_path(data, temp, arg));
 }
 
@@ -124,10 +205,7 @@ void export(char **envp, char *input, t_data *data)
 		if (arg_has_brackets(arg) == ARG_HAS_NO_BRACKETS)
 			arg = split_no_brackets(arg);
 		if (arg_is_a_path(arg) == 1)
-		{
-			printf("arg has a path\n");
 			arg = create_arg_with_path(data, arg);
-		}
 		if (check_arg(arg) == ARG_HAS_EQUAL)
 		{
 			if (arg_has_brackets(arg) == ARG_HAS_BRACKETS)
