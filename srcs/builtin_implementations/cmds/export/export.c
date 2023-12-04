@@ -115,7 +115,6 @@ char	*add_path_to_arg(char *path, char *arg)
 		first_part[j] = arg[j];
 		j++;
 	}
-	printf("first part = %s\n", first_part);
 	while(arg[i] && arg[i] != ' ')
 		i++;
 	pos = i;
@@ -128,7 +127,6 @@ char	*add_path_to_arg(char *path, char *arg)
 		pos++;
 		i++;
 	}
-	printf("second part = %s\n", second_part);
 	return (creating_new_arg_with_path(first_part, second_part, path));
 }
 
@@ -139,10 +137,7 @@ char *compare_path(t_data *data, char *path, char *arg)
 	j = 0;
 	i = 0;
 	while(path[j] && path[j] != ' ')
-	{
-		write(1, &path[j], 1);
 		j++;
-	}
 	while(data->exprt[i])
 	{
 		if (ft_strncmp(data->exprt[i], path, j) == 0)
@@ -182,7 +177,6 @@ char	*create_arg_with_path(t_data *data, char *arg)
 		i++;
 	}
 	temp[i] = '\0';
-	printf("temp= %s\n", temp);
 	return (compare_path(data, temp, arg));
 }
 
