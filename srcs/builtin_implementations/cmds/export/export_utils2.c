@@ -69,9 +69,11 @@ void	print_export(t_data	*data)
 	int	i;
 
 	i = 0;
+	bubbleSort(data->exprt, data->export_size);
 	while (i < data->export_size)
 	{
-		printf("%s\n", data->exprt[i]);
+		if (data->exprt[i][0] != '\0')
+			printf("%s\n", data->exprt[i]);
 		i++;
 	}
 }

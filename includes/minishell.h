@@ -93,7 +93,8 @@ int		check_builtin(char *input);
 void	ctrlCHandler(int signum);
 void	ctrlBackslashHandler(int signum);
 
-
+/*UNSET FILES*/
+void	unset(t_data *data, char *input);
 /* CD FILE*/
 void cd(char *str);
 
@@ -122,6 +123,7 @@ int	arg_has_brackets(char *arg);
 char	*split_no_brackets(char *arg);
 void	print_export(t_data	*data);
 void	reset_variable(char *arg, t_data *data);
+int		arg_is_a_path(char *arg);
 
 
 

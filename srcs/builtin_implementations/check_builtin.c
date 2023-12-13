@@ -20,6 +20,8 @@ int	check_builtin(char *input)
 		return (IS_A_BUILTIN);
 	else if (!ft_strncmp(input, "help", 4))
 		return (IS_A_BUILTIN);
+	else if (!ft_strncmp(input, "unset", 5))
+		return (IS_A_BUILTIN);
 	else if (!ft_strncmp(input, "cd", 2))
 		return (IS_A_BUILTIN);
 	else if (!ft_strncmp(input, "exit", 4))

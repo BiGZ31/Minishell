@@ -32,8 +32,8 @@ void	exec_builtin(char *input, char **envp, t_data *data)
 		env(envp);
 	else if (!ft_strncmp(input, "help", 4))
 		help();
-	// else if (!ft_strncmp(input, "unset", 6))
-	// 	unset(data, input);
+	else if (!ft_strncmp(input, "unset", 5))
+		unset(data, input);
 	else if (!ft_strncmp(input, "cd", 2)) // cd correct the space after file and also the correct also the cd ../
 		cd(input);
 	else if (!ft_strncmp(input, "exit", 4)) // exit finished
