@@ -180,7 +180,7 @@ char	*create_arg_with_path(t_data *data, char *arg)
 	return (compare_path(data, temp, arg));
 }
 
-void export(char **envp, char *input, t_data *data)
+void export(char **envp, char *input, t_data *data)// FIXME: do it with a lot of chars to create multiple variables
 {
     char *arg;
 
@@ -213,7 +213,7 @@ void export(char **envp, char *input, t_data *data)
 		{
 			arg = add_equaltoarg(arg);
 			if (arg_already_a_variable(data, arg) == VAR_EXISTS)
-				reset_variable(arg, data);
+				return ;
 			else
 				add_arg(arg, data);
 		}

@@ -106,7 +106,7 @@ void env(char **envp);
 
 /*ECHO FILE*/
 void echon(char *str);
-void echo(char *str);
+void	echo(char *str, t_data	*data);
 
 /*EXPORT FILE*/
 void export(char **envp, char *input, t_data *data);

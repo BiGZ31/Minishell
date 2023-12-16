@@ -21,4 +21,6 @@ void	help(void)
 	printf("  %s'env' %s Shows your current environment.%s\n",B_BLUE, BLUE, RESET);
 	printf("  %s'cd'  %s Displays the name of the current directory or changes the current directory.%s\n",B_BLUE, BLUE, RESET);
 	printf("  %s'exit'%s Exits the minishell.%s\n",B_BLUE, BLUE, RESET);
+	printf("  %s'unset'%s Unsets a variable.%s\n",B_BLUE, BLUE, RESET);
+	printf("  %s'export'%s Mark variables and functions to be passed to child processes%s\n",B_BLUE, BLUE, RESET);
 }

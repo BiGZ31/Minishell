@@ -47,17 +47,84 @@
 // 	return (0);
 // }
 
-void	echo(char *str)
+char *create_new_str(char *str, char *path, t_data *data)
+{
+	int i;
+	char	*new;
+	int size;
+	int j;
+	int d;
+
+	i = 0;
+	j = 0;
+	size = 0;
+	while(data->exprt[i])
+	{
+		if (strncmp(data->exprt[i], path, ft_strlen(path)) == 0 && data->exprt[i][ft_strlen(path) == '='])
+		{
+			while(data->exprt[i][size])
+				size++;
+			new = malloc (sizeof(char) * (size - ft_strlen(path)) + 1);
+			d = ft_strlen(path) + 1;
+			while(j < size)
+			{
+				new[j] = data->exprt[i][d];
+				j++;
+				d++;
+			}
+		}
+		i++;
+	}
+	free(path);
+	new[j] = '\0';
+	return (str);
+}
+
+char	*temp_path(char *str, t_data *data)//TODO: FIND THE DATA.EXPRT LINE IF NOT JUST PRINT
+{
+	int i;
+	char *temp;
+	int end;
+	int start;
+
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] == '$')
+		{
+			i++;
+			start = i;
+			while(str[i] != ' ')
+				i++;
+			end = i;
+		}
+		i++;
+	}
+	temp = malloc(sizeof(char) * (end - start) + 1);
+	i = 0;
+	while(start < end)
+	{
+		temp[i] = str[start];
+		start++;
+		i++;
+	}
+	temp[i] = '\0';
+	printf("path = %s\n", temp);
+	create_new_str(str, temp, data);
+	return (str);
+}
+
+void	echo(char *str, t_data	*data)//TODO: ADD PATH TO THE ECHO "$PWD" STUFF LIKE THAT
 {
 	int i;
 	int bin;
 
 	bin = 0;
-	i = 0;
+	i = 4;
+
+	temp_path(str, data);
 	while(str[i])
 	{
-		while(i < 4)
-			i++;
 		while(str[i] == ' ')
 		{
 			if (bin == 1)

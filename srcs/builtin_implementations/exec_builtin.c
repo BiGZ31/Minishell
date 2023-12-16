@@ -39,7 +39,7 @@ void	exec_builtin(char *input, char **envp, t_data *data)
 	else if (!ft_strncmp(input, "exit", 4)) // exit finished
 		exitx(data);
 	else if (!ft_strncmp(input, "echo", 4)) //echo try and do the double "" and simple ''
-		echo(input);
+		echo(input, data);
 	else if ((!ft_strncmp(input, "echo -n", 8))) //echo -n (needs fix)
 		echon(input);
 	else if (!ft_strncmp(input, "export", 6))

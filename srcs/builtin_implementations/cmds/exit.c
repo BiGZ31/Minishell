@@ -12,7 +12,7 @@
 
 #include "../../../includes/minishell.h"
 
-void	exitx(t_data	*data)
+void	exitx(t_data	*data)//TODO: free everything
 {
 	printf("%sGoodbye, thanks for using KawaiiShell !%s\n", PINK, RESET);
 	clear_history();

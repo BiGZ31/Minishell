@@ -12,7 +12,7 @@
 
 # include "../../../includes/minishell.h"
 
-void	env(char **envp)// add the function when you moove path it also mooves
+void	env(char **envp)
 {
 	int	i;
 
@@ -23,6 +23,8 @@ void	env(char **envp)// add the function when you moove path it also mooves
 		i++;
 	}
 }
-
-/*moove sh level up to one each time u launch minishell
-todo : eifhefs*/
+/*
+TODO: add the stuff u export
+TODO: change path and old path 
+TODO: move sh level
+*/

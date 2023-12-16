@@ -40,10 +40,24 @@ static int exists(char *file)
 		start++;
 		i++;
 	}
-	if (ft_strncmp(file, temp, ft_strlen(file)) == 1) // we need to add a temp with a "\"" in the end also remove the spaces at the end 
-		printf("Error: Folder not found.\n");
+	if (ft_strncmp(file, temp, ft_strlen(file) - 1) != 0) // FIXME: when absolute path small bug to fix (folder not found even if it did)
+		printf("%sError: Folder not found.%s\n", RED, RESET);
 	free(temp);
 	free(pwd_path);
+	return (0);
+}
+
+int	find_arg(char *str)
+{
+	int i;
+
+	i = 3;
+	while(str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\0')
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
@@ -55,12 +69,15 @@ void	cd(char *str)
 	int size;
 
 	i = 0;
+	if (find_arg(str) == 0)
+	{
+		chdir(getenv("HOME"));
+		return ;
+	}
 	while(str[i] != ' ' && str[i])
 		i++;
-	//skipping the first word  (cd ) (args)
 	while(str[i] == ' ' && str[i])
 		i++;
-	//jumping spaces
 	start = i;
 	while(str[i])
 		i++;

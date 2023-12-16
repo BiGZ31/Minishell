@@ -30,7 +30,7 @@ void	unset_var(t_data *data, char *arg)
 	printf("%sVariable not found!%s\n", YELLOW, RESET);
 }
 
-void	unset(t_data *data, char *input)
+void	unset(t_data *data, char *input) //FIXME: do it with multiples char so u can unset a lot in one cmd
 {
 	int i;
 	char *temp;
